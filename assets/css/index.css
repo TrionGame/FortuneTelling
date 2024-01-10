@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap");
+.br-sp {
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .br-sp {
+    display: none;
+  }
+}
+
+body {
+  position: relative;
+  background-image: url(../images/top_bg.jpg);
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-wrap {
+  position: relative;
+  width: 90%;
+  margin: 40px auto;
+  background: #FFF;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 768px) {
+  .form-wrap {
+    padding: 60px;
+  }
+}
+.form-wrap .form-ttl {
+  font-size: 2.4rem;
+  line-height: 1.8;
+  text-align: center;
+}
+.form-wrap form {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.form-wrap form .input-item label {
+  display: block;
+  font-size: 1.6rem;
+  text-align: left;
+}
+.form-wrap form .input-item input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1.6rem;
+}
+.form-wrap form .input-item input:focus {
+  outline: none;
+  border: 1px solid rgba(204, 94, 231, 0.8431372549);
+}
+.form-wrap form .input-item .input-hosoku {
+  font-size: 1.4rem;
+  text-align: left;
+  margin: 10px auto 40px;
+}
+.form-wrap form .hosoku-wrap {
+  font-size: 1.6rem;
+}
+.form-wrap form .calc-btn {
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 2rem;
+  margin: 40px auto;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(237, 177, 252, 0.8431372549);
+  color: #FFF;
+  position: relative;
+  overflow: hidden;
+}
+.form-wrap form .calc-btn:hover {
+  cursor: pointer;
+}
+.form-wrap form .calc-btn::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: -1;
+  transition: all 1s;
+  transform: translate(50%, -50%) scale(0.3);
+  animation-name: btnAnime;
+  animation-fill-mode: backwards;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-direction: normal;
+  background-color: rgba(204, 94, 231, 0.8431372549);
+  z-index: 1;
+  animation-iteration-count: infinite;
+}
+@keyframes btnAnime {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(100);
+  }
+}
+.form-wrap form .calc-btn span {
+  position: relative;
+  z-index: 2;
+}
+.form-wrap #errorMessages {
+  display: none;
+  font-size: 1.6rem;
+  margin-top: 40px;
+  color: #ff0000;
+  background-color: rgba(255, 0, 0, 0.062745098);
+  border: 1px solid #ff0000;
+  border-radius: 10px;
+}
+
+.results-wrap {
+  display: none;
+  position: relative;
+  width: 90%;
+  margin: 40px auto;
+  background: #FFF;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 768px) {
+  .results-wrap {
+    padding: 60px;
+  }
+}
+.results-wrap h2 {
+  font-size: 2.4rem;
+  line-height: 1.8;
+}
+
+.res-birthdate-wrap, .res-name-wrap {
+  margin-top: 40px;
+}
+.res-birthdate-wrap .ttl, .res-name-wrap .ttl {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.res-birthdate-wrap .ttl .inputed-birthdate, .res-name-wrap .ttl .inputed-birthdate {
+  font-size: 2.4rem;
+}
+.res-birthdate-wrap .ttl .inputed-name, .res-name-wrap .ttl .inputed-name {
+  font-size: 2.4rem;
+  margin-right: 10px;
+}
+.res-birthdate-wrap table, .res-name-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.res-birthdate-wrap table tr, .res-name-wrap table tr {
+  margin-bottom: 6px;
+  display: block;
+  border-bottom: 1px solid #ededed;
+}
+.res-birthdate-wrap table th, .res-name-wrap table th {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.8;
+  text-align: left;
+  width: 70%;
+  padding: 10px;
+}
+.res-birthdate-wrap table td, .res-name-wrap table td {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  text-align: left;
+  width: 10%;
+}
+.res-birthdate-wrap table td .icon-wrap, .res-name-wrap table td .icon-wrap {
+  padding-left: 40px;
+  position: relative;
+}
+.res-birthdate-wrap table td .icon-wrap i, .res-name-wrap table td .icon-wrap i {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  font-size: 3.6rem;
+  color: gray;
+}
+.res-birthdate-wrap table td .icon-wrap i.upside-down, .res-name-wrap table td .icon-wrap i.upside-down {
+  transform: translate(50%, -50%) rotate(180deg);
+}
+.res-birthdate-wrap table td .icon-wrap i.angle45, .res-name-wrap table td .icon-wrap i.angle45 {
+  transform: translate(50%, -50%) rotate(45deg);
+}
+.res-birthdate-wrap table td .icon-wrap .ans-val, .res-name-wrap table td .icon-wrap .ans-val {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}/*# sourceMappingURL=index.css.map */

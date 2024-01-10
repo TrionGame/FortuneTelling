@@ -1,0 +1,235 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap');
+$breakpoint: 768px;
+
+@mixin mediaPC {
+	@media screen and (min-width: ($breakpoint)) {
+		@content;
+	}
+}
+
+@mixin mediaSP {
+	@media screen and (max-width: ($breakpoint)) {
+		@content;
+	}
+}
+
+.br-sp {
+	display: block;
+
+	@include mediaPC() {
+		display: none;
+	}
+}
+body{
+    position: relative;
+    background-image: url(../images/top_bg.jpg);
+    // background-position: center;
+    // background-size: auto;
+    // background-repeat: repeat;
+}
+.video{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.form-wrap{
+    position: relative;
+    width: 90%;
+    margin: 40px auto;
+    background: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.1);
+    @include mediaPC(){
+        padding: 60px;
+
+    }
+    .form-ttl{
+        font-size: 2.4rem;
+        line-height: 1.8;
+        text-align: center;
+    }
+    form{
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+        .input-item{
+            label{
+                display: block;
+                font-size: 1.6rem;
+                text-align: left;
+            }
+            input{
+                width: 100%;
+                height: 40px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 10px;
+                font-size: 1.6rem;
+                &:focus{
+                    outline: none;
+                    border: 1px solid #cc5ee7d7;
+                }
+            }
+            .input-hosoku{
+                font-size: 1.4rem;
+                text-align: left;
+                margin: 10px auto 40px;
+            }
+        }
+        .hosoku-wrap{
+            font-size: 1.6rem;
+        }
+        .calc-btn{
+            background-color: transparent;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 2.0rem;
+            margin: 40px auto;
+            width: 100%;
+            padding: 10px;
+            background-color: #edb1fcd7;
+            color: #FFF;
+            position: relative;
+            overflow: hidden;
+            &:hover{
+                cursor: pointer;
+            }
+
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                z-index: -1;
+                transition: all 1s;
+                transform: translate(50%, -50%) scale(.3);
+                animation-name: btnAnime;
+                animation-fill-mode: backwards;
+                animation-duration: 3s;
+                animation-timing-function: ease;
+                animation-direction: normal;
+                background-color: #cc5ee7d7;
+                z-index: 1;
+                animation-iteration-count: infinite;
+    
+                @keyframes btnAnime {
+                    0% {
+                        transform: scale(0);
+                    }
+    
+                    100% {
+                        transform: scale(100);
+                    }
+                }
+            }
+            span{
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+    #errorMessages{
+        display: none;
+        font-size: 1.6rem;
+        margin-top: 40px;
+        color: #ff0000;
+        background-color: #ff000010;
+        border: 1px solid #ff0000;
+        border-radius: 10px;
+    }
+}
+
+.results-wrap{
+    display: none;
+    position: relative;
+    width: 90%;
+    margin: 40px auto;
+    background: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.1);
+    @include mediaPC(){
+        padding: 60px;
+
+    }
+    h2{
+        font-size: 2.4rem;
+        line-height: 1.8;
+    }
+}
+.res-birthdate-wrap,.res-name-wrap{
+ 
+    margin-top: 40px;
+    .ttl{
+        font-size: 1.8rem;
+        line-height: 1.5;
+        text-align: left;
+
+        .inputed-birthdate{
+            font-size: 2.4rem;
+        }
+        .inputed-name{
+            font-size: 2.4rem;
+            margin-right: 10px;
+        }
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        tr{
+            margin-bottom: 6px;
+            display: block;
+            border-bottom: 1px solid #ededed;
+        }
+        th{
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.8;
+            text-align: left;
+            width: 70%;
+            padding: 10px;
+        }
+        td{
+            font-size: 1.6rem;
+            line-height: 1.8;
+            text-align: left;
+            width: 10%;
+            .icon-wrap{
+                // margin-left: 10px;
+                padding-left: 40px;
+                position: relative;
+                i{
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+                    font-size: 3.6rem;
+                    color: gray;
+                    &.upside-down{
+                        transform:translate(50%,-50%) rotate(180deg);
+                    }
+                    &.angle45{
+                        transform:translate(50%,-50%) rotate(45deg);
+                    }
+
+                }
+                .ans-val{
+                    font-size: 2.0rem;
+                    line-height: 1.5;
+                    font-weight: 600;   
+
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+                }
+            }
+        }
+    }
+}
