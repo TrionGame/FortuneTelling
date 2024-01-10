@@ -176,14 +176,14 @@ body {
   font-weight: 500;
   line-height: 1.8;
   text-align: left;
-  width: 70%;
+  width: 50%;
   padding: 10px;
 }
 .res-birthdate-wrap table td, .res-name-wrap table td {
   font-size: 1.6rem;
   line-height: 1.8;
   text-align: left;
-  width: 10%;
+  width: 20%;
 }
 .res-birthdate-wrap table td .icon-wrap, .res-name-wrap table td .icon-wrap {
   padding-left: 40px;
@@ -195,7 +195,7 @@ body {
   right: 50%;
   transform: translate(50%, -50%);
   font-size: 3.6rem;
-  color: gray;
+  color: #ddd;
 }
 .res-birthdate-wrap table td .icon-wrap i.upside-down, .res-name-wrap table td .icon-wrap i.upside-down {
   transform: translate(50%, -50%) rotate(180deg);

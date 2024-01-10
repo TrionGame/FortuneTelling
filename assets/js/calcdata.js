@@ -230,6 +230,54 @@ function convertStringToNumberWithConditions(inputString,birthdate) {
     let sumCntString = calcEachNum(cntString.toString());
     console.log("ウイーク：" + sumCntString.cntSum + "　" + sumCntString.expression);
     //欠陥：missingNumbers()
+
+
+    var inputString = convertedString;
+
+    // 出現回数を格納するオブジェクト
+    var digitCounts = {};
+    // 上限基準に達した数字を格納するオブジェクト
+    var exceededLimits = {};
+    // 各数字の上限基準
+    var limits = {
+        "1": 5,
+        "2": 3,
+        "3": 4,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 3,
+        "8": 2,
+        "9": 6
+    };
+    
+    // 各数字の出現回数を数える
+    for (var i = 0; i < inputString.length; i++) {
+        var digit = inputString[i];
+    
+        if (digitCounts[digit]) {
+            // すでに存在する場合はカウントを増やす
+            digitCounts[digit]++;
+        } else {
+            // 存在しない場合は新たにカウントを初期化
+            digitCounts[digit] = 1;
+        }
+    
+        // 上限基準を超えている場合はexceededLimitsに格納
+        if (digitCounts[digit] >= limits[digit]) {
+            exceededLimits[digit] = digitCounts[digit];
+        }
+    }
+    // exceededLimitsをカンマ区切りの文字列に変換
+    var exceededLimitsString = Object.keys(exceededLimits).join(", ");
+    // 結果をコンソールに出力
+    console.log("各数字の出現回数:");
+    console.log(digitCounts);
+    
+    console.log("上限基準を超えた数字:");
+    console.log(exceededLimits);
+
+
     return {
         convertedString: convertedString,
         sumMichi: sumMichi,//道
@@ -238,7 +286,7 @@ function convertStringToNumberWithConditions(inputString,birthdate) {
         sumPersona: sumPersona,//ペルソナ
         sumCntString: sumCntString,//ウイーク
         missingNumbers: missingNumbersString,//欠落
-        // missingNumbers: missingNumbersString//特性
+        valCharacter: exceededLimitsString//特性
     };
 }
 
