@@ -43,7 +43,7 @@ $(document).ready(function () {
             $("#valPer").text(resultName.sumPersona.cntSum);
             $("#valWeak").text(resultName.sumCntString.cntSum);
             $("#valMiss").text("("+resultName.missingNumbers+")");
-            $("#valCharacter").text("\""+resultName.yearSum+"\"");
+            $("#valCharacter").text("\""+resultName.valCharacter+"\"");
             // $("#valCharacter").text(resultName.yearSum);
 
             $("#errorMessages").css({
