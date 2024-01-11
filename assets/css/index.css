@@ -58,7 +58,7 @@ body {
 }
 .form-wrap form .input-item input:focus {
   outline: none;
-  border: 1px solid rgba(204, 94, 231, 0.8431372549);
+  border: 1px solid rgba(94, 131, 231, 0.8431372549);
 }
 .form-wrap form .input-item .input-hosoku {
   font-size: 1.4rem;
@@ -176,7 +176,7 @@ body {
   font-weight: 500;
   line-height: 1.8;
   text-align: left;
-  width: 70%;
+  width: 10%;
   padding: 10px;
 }
 .res-birthdate-wrap table td, .res-name-wrap table td {
@@ -185,8 +185,16 @@ body {
   text-align: left;
   width: 10%;
 }
+.res-birthdate-wrap table td div, .res-name-wrap table td div {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
 .res-birthdate-wrap table td .icon-wrap, .res-name-wrap table td .icon-wrap {
-  padding-left: 40px;
+  display: inline-block;
+  width: 60px;
+  height: 10px;
+  padding-left: 10px;
   position: relative;
 }
 .res-birthdate-wrap table td .icon-wrap i, .res-name-wrap table td .icon-wrap i {

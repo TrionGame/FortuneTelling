@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="./assets/css/common.css">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
-    <script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -49,65 +48,89 @@
             <div class="ttl">生年月日：<span class="inputed-birthdate" id="inputedBirthdate"></span></div>
             <table>
                 <tr>
-                    <th>＊ベース</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valBase" class="ans-val"></span></span></td> 
+                    <th rowspan="2">＊ベース</th>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valBase"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valBase_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊メイン</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valMain" class="ans-val"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valMain"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valMain_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊チャレンジ</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valChal" class="ans-val"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valChal"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valChal_shiki"></span></td>
                 </tr>
             </table>
         </div>
         <div class="res-name-wrap">
-            <div class="ttl">名前：<span class="inputed-name" id="inputedName"></span>(<span id="inputedConvertedString"></span>)</div>
+            <div class="ttl">名前：<span class="inputed-name" id="inputedName"></span><br class="br-sp">(<span
+                    id="inputedConvertedString"></span>)</div>
             <table>
                 <tr>
                     <th>＊道</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valMichi" class="ans-val"></span><span id="valMichi_shiki"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valMichi"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valMichi_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊到達</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valReach" class="ans-val"></span><span id="valReach_shiki"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-circle"></i><span id="valReach"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valReach_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊ハート</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-heart"></i><span id="valHeart" class="ans-val"></span><span id="valHeart_shiki"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-heart"></i><span id="valHeart"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valHeart_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊ペルソナ</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-heart upside-down"></i><span id="valPer" class="ans-val"></span><span id="valPer_shiki"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-heart upside-down"></i><span id="valPer"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valPer_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊ウイーク</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45"></i><span id="valWeak" class="ans-val"></span><span id="valWeak_shiki"></span></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45"></i><span id="valWeak"
+                                class="ans-val"></span></span><br class="br-sp"><span id="valWeak_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊欠落</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45" style="opacity: 0;"></i><span id="valMiss" class="ans-val"></span></span><span id="valMiss_shiki"></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45" style="display: none;"></i><span
+                                id="valMiss" class="ans-val"></span></span><br class="br-sp"><span id="valMiss_shiki"></span></td>
                 </tr>
                 <tr>
                     <th>＊特性</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45" style="opacity: 0;"></i><span id="valCharacter" class="ans-val"></span></span><span id="valCharacter"></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square angle45" style="display: none;"></i><span
+                                id="valCharacter" class="ans-val"></span></span><span id="valCharacter"></span>
+                        <br>
+                        <div>-1 ( <span id="cntOne"></span>/5 )</div>
+                        <div>-2 ( <span id="cntTwo"></span>/3 )</div>
+                        <div>-3 ( <span id="cntThree"></span>/4 )</div>
+                        <div>-4 ( <span id="cntFour"></span>/3 )</div>
+                        <div>-5 ( <span id="cntFive"></span>/5 )</div>
+                        <div>-6 ( <span id="cntSix"></span>/3 )</div>
+                        <div>-7 ( <span id="cntSeven"></span>/3 )</div>
+                        <div>-8 ( <span id="cntEight"></span>/2 )</div>
+                        <div>-9 ( <span id="cntNine"></span>/6 )</div>
+                    </td>
                 </tr>
             </table>
+            <canvas id="myChart" width="400" height="200"></canvas>
         </div>
         <div class="res-name-wrap">
             <!-- <div class="ttl">名前：<span class="inputed-name"></span></div> -->
             <table>
                 <tr>
                     <th>＊イヤーナンバー</th>
-                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square"></i><span id="valYearNum" class="ans-val"></span></span><span id="valYearNum_shiki"></span></td>
+                    <td>:<span class="icon-wrap"><i class="fa-regular fa-square"></i><span id="valYearNum"
+                                class="ans-val"></span></span><span id="valYearNum_shiki"></span></td>
                 </tr>
             </table>
         </div>
 
     </div>
-<script src="./assets/js/index.js"></script>
-<script src="./assets/js/calcdata.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/calcdata.js"></script>
 </body>
 
 </html>

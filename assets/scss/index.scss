@@ -69,7 +69,7 @@ body{
                 font-size: 1.6rem;
                 &:focus{
                     outline: none;
-                    border: 1px solid #cc5ee7d7;
+                    border: 1px solid #5e83e7d7;
                 }
             }
             .input-hosoku{
@@ -115,6 +115,7 @@ body{
                 animation-timing-function: ease;
                 animation-direction: normal;
                 background-color: #cc5ee7d7;
+                // background-color: #db8eeed7;
                 z-index: 1;
                 animation-iteration-count: infinite;
     
@@ -192,7 +193,7 @@ body{
             font-weight: 500;
             line-height: 1.8;
             text-align: left;
-            width: 70%;
+            width: 10%;
             padding: 10px;
         }
         td{
@@ -200,9 +201,17 @@ body{
             line-height: 1.8;
             text-align: left;
             width: 10%;
+            div{
+                font-size: 2rem;
+                line-height: 1.5;
+                font-weight: 600;
+            }
             .icon-wrap{
                 // margin-left: 10px;
-                padding-left: 40px;
+                display: inline-block;
+                width: 60px;
+                height: 10px;
+                padding-left: 10px;
                 position: relative;
                 i{
                     position: absolute;
@@ -213,9 +222,11 @@ body{
                     color: gray;
                     &.upside-down{
                         transform:translate(50%,-50%) rotate(180deg);
+                        // transform: rotate(180deg);
                     }
                     &.angle45{
                         transform:translate(50%,-50%) rotate(45deg);
+                        // transform:rotate(45deg);
                     }
 
                 }
