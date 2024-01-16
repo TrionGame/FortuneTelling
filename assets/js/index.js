@@ -27,6 +27,7 @@ $(document).ready(function () {
             }
         } else {
             const numToCircleNum = {
+                0: '⓪',
                 1: '①',
                 2: '②',
                 3: '③',
