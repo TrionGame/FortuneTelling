@@ -45,15 +45,60 @@ function calcEachNum(num) {
         expression: expressionStr,
     }
 }
+function calcEachNum2(num) {
+    let cntSum = 0;
+    let expression = "";
+    for (var i = 0; i < num.length; i++) {
+        cntSum += parseInt(num[i]);
+        if(num[i] == 0){
+            continue;
+        }
+        expression += num[i]; // 式に各桁の数字を追加
+
+        if (i < num.length - 1) {
+            expression += " + "; // 最後の桁以外に "+" を追加
+        }
+    }
+    //ぞろ目チェック
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let cntsumStr = cntSum;
+    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+        while (cntSum >= 10) {
+            var tempCntSum = 0;
+            cntsumStr = cntSum.toString();
+            for (var i = 0; i < cntsumStr.length; i++) {
+                tempCntSum += parseInt(cntsumStr[i]);
+                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                    break;
+                }
+            }
+            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                cntSum = tempCntSum;
+                break;
+            } else {
+                cntSum = tempCntSum;
+            }
+        }
+    }
+    // let expressionStr = "(" + expression + ")->" + cntsumStr + "->" + cntSum;
+    let expressionStr = num+ "->" + cntsumStr + "->" + cntSum;
+    return {
+        cntSum: cntSum,
+        expression: expressionStr,
+    }
+}
+
 
 
 // 生年月日から算出(ベース/メイン/チャレンジ/イヤーナンバー)
 function calculateDigits(birthdate) {
     // 月と日を取得
-    let day = birthdate.substr(6, 2);
-    let b_date = birthdate.substr(4, 4);
+    let birth_year = birthdate.substr(0, 4);//生まれ年
+    let birth_month = birthdate.substr(4, 2);//生まれ月
+    let day = birthdate.substr(6, 2);//生まれ日
+    let b_date = birthdate.substr(4, 4);//生まれ月日
 
-    let sumBirthdate = calcEachNum(birthdate);
+    let sumBirthdate = calcEachNum(birthdate);//メイン数
 
     let sumDay = calcEachNum(day);
 
@@ -76,12 +121,121 @@ function calculateDigits(birthdate) {
         }
         yearSum = tempYearNumSum;
     }
+
+    //　▼メジャーサイクルナンバー：追い風
+    let valuesTable = {
+        1: ["0~26歳", "27~53歳", "54歳~"],
+        2: ["0~25歳", "26~52歳", "53歳~"],
+        3: ["0~33歳", "34~60歳", "61歳~"],
+        4: ["0~32歳", "33~59歳", "60歳~"],
+        5: ["0~31歳", "32~58歳", "59歳~"],
+        6: ["0~30歳", "31~57歳", "58歳~"],
+        7: ["0~29歳", "30~56歳", "57歳~"],
+        8: ["0~28歳", "29~55歳", "56歳~"],
+        9: ["0~27歳", "28~54歳", "55歳~"],
+        11: ["0~25歳", "26~52歳", "53歳~"],
+        22: ["0~32歳", "33~59歳", "60歳~"],
+        33: ["0~30歳", "31~57歳", "58歳~"],
+    };
+    var rangeFirstVal = valuesTable[sumBirthdate.cntSum][0];
+    var rangeSecondVal = valuesTable[sumBirthdate.cntSum][1];
+    var rangeThirdVal = valuesTable[sumBirthdate.cntSum][2];
+    let sumBirthMonth = calcEachNum(birth_month);
+    let sumBirthYear = calcEachNum(birth_year);
+    sumBirthMonth["rangeFirstVal"] = rangeFirstVal;
+    sumDay["rangeSecondVal"] = rangeSecondVal;
+    sumBirthYear["rangeThirdVal"] = rangeThirdVal;
+
+
+    //▼ピナクルナンバー:登り山
+    // let birth_year = birthdate.substr(0, 4);//生まれ年
+    // let birth_month = birthdate.substr(4, 2);//生まれ月
+    // let day = birthdate.substr(6, 2);//生まれ日
+    //ファースト(生まれ月＋日)[年齢=36-メイン数]
+    let firstAge = 36 - parseInt(sumBirthdate.cntSum);
+    let sumMonthDay = parseInt(birth_month) + parseInt(day);
+    let pnFirstVal = calcEachNum2(sumMonthDay.toString());
+    var pnFirstRange = "36-" + parseInt(sumBirthdate.cntSum) + "=" + firstAge + "[0歳~" + firstAge + "歳]("+parseInt(birth_month)+"+"+parseInt(day)+")->";
+
+    //セカンド(生まれ日+生まれ年)[年齢=ファースト+9]
+    let sumYearDay = parseInt(birth_year) + parseInt(day);
+    sumYearDay = calcEachNum2(sumYearDay.toString());
+    let secondAge = firstAge + 9;
+    let fromSecondAge = parseInt(firstAge) + 1;
+    let pnSecondRange = "[" + fromSecondAge + "歳~" + secondAge + "歳]("+parseInt(day)+"+"+parseInt(birth_year)+")->";
+
+    //サード(ファースト＋セカンド)
+    let thirdAge = secondAge + 9;
+    let fromThirdAge = parseInt(secondAge) + 1;
+    let pnThirdRange = "[" + fromThirdAge + "歳~" + thirdAge + "歳]("+parseInt(pnFirstVal.cntSum)+"+"+parseInt(sumYearDay.cntSum)+")->";
+    let pnThirdVal = parseInt(sumBdate.cntSum) + parseInt(sumYearDay.cntSum)
+    pnThirdVal = calcEachNum2(pnThirdVal.toString());
+    //フォース(生まれ月＋年)
+    let fromFourthAge = parseInt(thirdAge) + 1;
+    let pnFourthRange = "[" + fromFourthAge + "歳~]("+parseInt(birth_month)+"+"+parseInt(birth_year)+")->";
+    let pnFourthVal = parseInt(birth_month) + parseInt(birth_year);
+    pnFourthVal = calcEachNum2(pnFourthVal.toString());
+    let pinacleArr = [];
+    // 各要素をオブジェクトとして初期化
+    pinacleArr["pnFirst"] = {};
+    pinacleArr["pnSecond"] = {};
+    pinacleArr["pnThird"] = {};
+    pinacleArr["pnFourth"] = {};
+    pinacleArr["pnFirst"]["pnFirstRange"] = pnFirstRange;
+    pinacleArr["pnFirst"]["pnFirstVal"] = pnFirstVal;
+    pinacleArr["pnSecond"]["pnSecondRange"] = pnSecondRange;
+    pinacleArr["pnSecond"]["pnSecondVal"] = sumYearDay;
+    pinacleArr["pnThird"]["pnThirdRange"] = pnThirdRange;
+    pinacleArr["pnThird"]["pnThirdVal"] = pnThirdVal;
+    pinacleArr["pnFourth"]["pnFourthRange"] = pnFourthRange;
+    pinacleArr["pnFourth"]["pnFourthVal"] = pnFourthVal;
+
+    //チャレンジナンバー：助け杖
+    //ファースト(生まれ日-月)[年齢=36-メイン数]
+    var chFirstVal = parseInt(day) - parseInt(birth_month) ;
+    chFirstVal = calcEachNum2(Math.abs(chFirstVal).toString());
+    var chFirstRange = "36-" + parseInt(sumBirthdate.cntSum) + "=" + firstAge + "[0歳~" + firstAge + "歳]("+parseInt(day)+"-"+parseInt(birth_month)+")->";
+
+    //セカンド
+    var chSeconVal = parseInt(birth_year) - parseInt(day) ;
+    chSeconVal = calcEachNum2(Math.abs(chSeconVal).toString());
+    let chSecondRange = "[" + fromSecondAge + "歳~" + secondAge + "歳]("+parseInt(birth_year)+"-"+parseInt(day)+")->";
+
+    //サード
+    var chThirdVal = parseInt(chSeconVal.cntSum) - parseInt(chFirstVal.cntSum) ;
+    chThirdVal = calcEachNum2(Math.abs(chThirdVal).toString());
+    let chThirdRange = "[" + fromThirdAge + "歳~" + thirdAge + "歳]("+parseInt(chSeconVal.cntSum)+"-"+parseInt(chFirstVal.cntSum)+")->";
+
+    //フォース
+    var chFourthVal = parseInt(birth_month) - parseInt(birth_year) ;
+    chFourthVal = calcEachNum2(Math.abs(chFourthVal).toString());
+    let chFourthRange = "[" + fromFourthAge + "歳~]("+parseInt(birth_month)+"-"+parseInt(birth_year)+")->";
+    let challengeArr = [];
+    // 各要素をオブジェクトとして初期化
+    challengeArr["chFirst"] = {};
+    challengeArr["chSecond"] = {};
+    challengeArr["chThird"] = {};
+    challengeArr["chFourth"] = {};
+    challengeArr["chFirst"]["chFirstVal"]=chFirstVal
+    challengeArr["chFirst"]["chFirstRange"] = chFirstRange;
+    challengeArr["chSecond"]["chSecondVal"]=chSeconVal
+    challengeArr["chSecond"]["chSecondRange"] = chSecondRange;
+    challengeArr["chThird"]["chThirdVal"]=chThirdVal
+    challengeArr["chThird"]["chThirdRange"] = chThirdRange;
+    challengeArr["chFourth"]["chFourthVal"]=chFourthVal
+    challengeArr["chFourth"]["chFourthRange"] = chFourthRange;
+    console.log(challengeArr);
+
+    //返り値
     return {
-        // sum: sum,
+        sumBirthYear: sumBirthYear,
+        sumBirthMonth: sumBirthMonth,
         sumBirthdate: sumBirthdate,
         sumDay: sumDay,
         sumBdate: sumBdate,
-        yearSum: yearSum
+        yearSum: yearSum,
+        pinacleArr: pinacleArr,
+        challengeArr: challengeArr,
     }
 }
 
@@ -203,4 +357,192 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
         valCharacter: exceededLimitsString,//特性
         digitCounts: digitCounts
     };
+}
+//フォーディメンション用カウント(身体)
+function numBody(cnt4, cnt5) {
+    let cnt4Int = parseInt(cnt4);
+    let cnt5Int = parseInt(cnt5);
+    let cntSumVal = cnt4Int + cnt5Int;
+
+    let cntSum = 0;
+    let expression = "";
+    let cntSumValStr = cntSumVal.toString();
+    for (var i = 0; i < cntSumValStr.length; i++) {
+        cntSum += parseInt(cntSumValStr[i]);
+        expression += cntSumValStr[i]; // 式に各桁の数字を追加
+
+        if (i < cntSumValStr.length - 1) {
+            expression += " + "; // 最後の桁以外に "+" を追加
+        }
+    }
+    //ぞろ目チェック
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let cntsumStr = cntSum;
+    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+        while (cntSum >= 10) {
+            var tempCntSum = 0;
+            cntsumStr = cntSum.toString();
+            for (var i = 0; i < cntsumStr.length; i++) {
+                tempCntSum += parseInt(cntsumStr[i]);
+                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                    break;
+                }
+            }
+            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                cntSum = tempCntSum;
+                break;
+            } else {
+                cntSum = tempCntSum;
+            }
+        }
+    }
+    // let expressionStr = "4(" + cnt4Int+"),5(" + cnt5Int + ")->(" + expression + ")->" + cntsumStr + "->" + cntSum;
+    let expressionStr = "4(" + cnt4Int + "),5(" + cnt5Int + ")->(" + cnt4Int + "+" + cnt5Int + ")->" + cntSum;
+    console.log(cntSum);
+    console.log(expressionStr);
+    return {
+        cntSum: cntSum,
+        expression: expressionStr,
+    }
+}
+//フォーディメンション用カウント(精神)
+function numMind(cnt1, cnt8) {
+    let cnt1Int = parseInt(cnt1);
+    let cnt8Int = parseInt(cnt8);
+    let cntSumVal = cnt1Int + cnt8Int;
+
+    let cntSum = 0;
+    let expression = "";
+    let cntSumValStr = cntSumVal.toString();
+    for (var i = 0; i < cntSumValStr.length; i++) {
+        cntSum += parseInt(cntSumValStr[i]);
+        expression += cntSumValStr[i]; // 式に各桁の数字を追加
+
+        if (i < cntSumValStr.length - 1) {
+            expression += " + "; // 最後の桁以外に "+" を追加
+        }
+    }
+    //ぞろ目チェック
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let cntsumStr = cntSum;
+    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+        while (cntSum >= 10) {
+            var tempCntSum = 0;
+            cntsumStr = cntSum.toString();
+            for (var i = 0; i < cntsumStr.length; i++) {
+                tempCntSum += parseInt(cntsumStr[i]);
+                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                    break;
+                }
+            }
+            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                cntSum = tempCntSum;
+                break;
+            } else {
+                cntSum = tempCntSum;
+            }
+        }
+    }
+    // let expressionStr = "4(" + cnt4Int+"),5(" + cnt5Int + ")->(" + expression + ")->" + cntsumStr + "->" + cntSum;
+    let expressionStr = "1(" + cnt1Int + "),8(" + cnt8Int + ")->(" + cnt1Int + "+" + cnt8Int + ")->" + cntSum;
+    console.log(cntSum);
+    console.log(expressionStr);
+    return {
+        cntSum: cntSum,
+        expression: expressionStr,
+    }
+}
+//フォーディメンション用カウント(感情)
+function numEmotion(cnt2, cnt3, cnt6) {
+    let cnt2Int = parseInt(cnt2);
+    let cnt3Int = parseInt(cnt3);
+    let cnt6Int = parseInt(cnt6);
+    let cntSumVal = cnt2Int + cnt3Int + cnt6Int;
+
+    let cntSum = 0;
+    let expression = "";
+    let cntSumValStr = cntSumVal.toString();
+    for (var i = 0; i < cntSumValStr.length; i++) {
+        cntSum += parseInt(cntSumValStr[i]);
+        expression += cntSumValStr[i]; // 式に各桁の数字を追加
+
+        if (i < cntSumValStr.length - 1) {
+            expression += " + "; // 最後の桁以外に "+" を追加
+        }
+    }
+    //ぞろ目チェック
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let cntsumStr = cntSum;
+    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+        while (cntSum >= 10) {
+            var tempCntSum = 0;
+            cntsumStr = cntSum.toString();
+            for (var i = 0; i < cntsumStr.length; i++) {
+                tempCntSum += parseInt(cntsumStr[i]);
+                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                    break;
+                }
+            }
+            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                cntSum = tempCntSum;
+                break;
+            } else {
+                cntSum = tempCntSum;
+            }
+        }
+    }
+    let expressionStr = "2(" + cnt2Int + "),3(" + cnt3Int + "),6(" + cnt6Int + ")->(" + cnt2Int + "+" + cnt3Int + "+" + cnt6Int + ")->" + cntSum;
+    console.log(cntSum);
+    console.log(expressionStr);
+    return {
+        cntSum: cntSum,
+        expression: expressionStr,
+    }
+}
+//フォーディメンション用カウント(直感)
+function numIntuition(cnt7, cnt9) {
+    let cnt7Int = parseInt(cnt7);
+    let cnt9Int = parseInt(cnt9);
+    let cntSumVal = cnt7Int + cnt9Int;
+
+    let cntSum = 0;
+    let expression = "";
+    let cntSumValStr = cntSumVal.toString();
+    for (var i = 0; i < cntSumValStr.length; i++) {
+        cntSum += parseInt(cntSumValStr[i]);
+        expression += cntSumValStr[i]; // 式に各桁の数字を追加
+
+        if (i < cntSumValStr.length - 1) {
+            expression += " + "; // 最後の桁以外に "+" を追加
+        }
+    }
+    //ぞろ目チェック
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let cntsumStr = cntSum;
+    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+        while (cntSum >= 10) {
+            var tempCntSum = 0;
+            cntsumStr = cntSum.toString();
+            for (var i = 0; i < cntsumStr.length; i++) {
+                tempCntSum += parseInt(cntsumStr[i]);
+                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                    break;
+                }
+            }
+            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                cntSum = tempCntSum;
+                break;
+            } else {
+                cntSum = tempCntSum;
+            }
+        }
+    }
+    // let expressionStr = "4(" + cnt4Int+"),5(" + cnt5Int + ")->(" + expression + ")->" + cntsumStr + "->" + cntSum;
+    let expressionStr = "7(" + cnt7Int + "),9(" + cnt9Int + ")->(" + cnt7Int + "+" + cnt9Int + ")->" + cntSum;
+    console.log(cntSum);
+    console.log(expressionStr);
+    return {
+        cntSum: cntSum,
+        expression: expressionStr,
+    }
 }

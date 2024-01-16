@@ -142,76 +142,129 @@ body {
     padding: 60px;
   }
 }
+.results-wrap .back-link.input {
+  text-align: left;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding-left: 10px;
+}
+.results-wrap .back-link.input a {
+  position: relative;
+}
+.results-wrap .back-link.input a::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid #333;
+  border-left: 1px solid #333;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%) rotate(-45deg);
+}
 .results-wrap h2 {
   font-size: 2.4rem;
   line-height: 1.8;
 }
 
-.res-birthdate-wrap, .res-name-wrap {
+.res-birthdate-wrap,
+.res-name-wrap {
   margin-top: 40px;
 }
-.res-birthdate-wrap .ttl, .res-name-wrap .ttl {
+.res-birthdate-wrap .ttl,
+.res-name-wrap .ttl {
   font-size: 1.8rem;
   line-height: 1.5;
   text-align: left;
 }
-.res-birthdate-wrap .ttl .inputed-birthdate, .res-name-wrap .ttl .inputed-birthdate {
+.res-birthdate-wrap .ttl .inputed-birthdate,
+.res-name-wrap .ttl .inputed-birthdate {
   font-size: 2.4rem;
 }
-.res-birthdate-wrap .ttl .inputed-name, .res-name-wrap .ttl .inputed-name {
+.res-birthdate-wrap .ttl .inputed-name,
+.res-name-wrap .ttl .inputed-name {
   font-size: 2.4rem;
   margin-right: 10px;
 }
-.res-birthdate-wrap table, .res-name-wrap table {
+.res-birthdate-wrap .res-wrap,
+.res-name-wrap .res-wrap {
   width: 100%;
   border-collapse: collapse;
 }
-.res-birthdate-wrap table tr, .res-name-wrap table tr {
+.res-birthdate-wrap .res-wrap .res-item,
+.res-name-wrap .res-wrap .res-item {
   margin-bottom: 6px;
-  display: block;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
   border-bottom: 1px solid #ededed;
 }
-.res-birthdate-wrap table th, .res-name-wrap table th {
+.res-birthdate-wrap .res-wrap .res-item.block,
+.res-name-wrap .res-wrap .res-item.block {
+  display: block;
+}
+.res-birthdate-wrap .res-wrap .res-ttl,
+.res-name-wrap .res-wrap .res-ttl {
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.8;
   text-align: left;
-  width: 10%;
-  padding: 10px;
+  width: 40%;
 }
-.res-birthdate-wrap table td, .res-name-wrap table td {
+.res-birthdate-wrap .res-wrap .res-ttl.w100,
+.res-name-wrap .res-wrap .res-ttl.w100 {
+  width: 100%;
+}
+.res-birthdate-wrap .res-wrap .res-contents,
+.res-name-wrap .res-wrap .res-contents {
   font-size: 1.6rem;
   line-height: 1.8;
   text-align: left;
-  width: 10%;
+  width: 60%;
 }
-.res-birthdate-wrap table td div, .res-name-wrap table td div {
+.res-birthdate-wrap .res-wrap .res-contents.w100,
+.res-name-wrap .res-wrap .res-contents.w100 {
+  width: 100%;
+}
+.res-birthdate-wrap .res-wrap .res-contents div,
+.res-name-wrap .res-wrap .res-contents div {
   font-size: 2rem;
-  line-height: 1.5;
+  line-height: 1.8;
   font-weight: 600;
 }
-.res-birthdate-wrap table td .icon-wrap, .res-name-wrap table td .icon-wrap {
+.res-birthdate-wrap .res-wrap .res-contents div.fw-normal,
+.res-name-wrap .res-wrap .res-contents div.fw-normal {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap,
+.res-name-wrap .res-wrap .res-contents .icon-wrap {
   display: inline-block;
   width: 60px;
   height: 10px;
   padding-left: 10px;
   position: relative;
 }
-.res-birthdate-wrap table td .icon-wrap i, .res-name-wrap table td .icon-wrap i {
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap i,
+.res-name-wrap .res-wrap .res-contents .icon-wrap i {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   font-size: 3.6rem;
-  color: gray;
+  color: #ddd;
 }
-.res-birthdate-wrap table td .icon-wrap i.upside-down, .res-name-wrap table td .icon-wrap i.upside-down {
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap i.upside-down,
+.res-name-wrap .res-wrap .res-contents .icon-wrap i.upside-down {
   transform: translate(50%, -50%) rotate(180deg);
 }
-.res-birthdate-wrap table td .icon-wrap i.angle45, .res-name-wrap table td .icon-wrap i.angle45 {
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap i.angle45,
+.res-name-wrap .res-wrap .res-contents .icon-wrap i.angle45 {
   transform: translate(50%, -50%) rotate(45deg);
 }
-.res-birthdate-wrap table td .icon-wrap .ans-val, .res-name-wrap table td .icon-wrap .ans-val {
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap .ans-val,
+.res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val {
   font-size: 2rem;
   line-height: 1.5;
   font-weight: 600;
@@ -219,4 +272,51 @@ body {
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
+}
+.res-birthdate-wrap .res-wrap .res-contents--sub,
+.res-name-wrap .res-wrap .res-contents--sub {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.img-convert-table {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1000px;
+}
+
+#page-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+  line-height: 1;
+  z-index: 99;
+}
+#page-top a {
+  background: rgba(204, 94, 231, 0.8431372549);
+  text-decoration: none;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  /* padding: 28px 5px; */
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#page-top a i {
+  font-size: 2rem;
+}
+#page-top a:hover {
+  text-decoration: none;
+  opacity: 0.5;
 }/*# sourceMappingURL=index.css.map */
