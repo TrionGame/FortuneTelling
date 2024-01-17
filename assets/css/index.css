@@ -19,6 +19,35 @@ body {
   left: 0;
 }
 
+.h-res-ttl {
+  font-size: 2.4rem;
+  line-height: 1.8;
+  font-weight: 500;
+}
+.h-res-ttl span {
+  position: relative;
+}
+.h-res-ttl span::before {
+  content: "";
+  width: 80px;
+  height: 1px;
+  background-color: #333;
+  position: absolute;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+}
+.h-res-ttl span::after {
+  content: "";
+  width: 80px;
+  height: 1px;
+  background-color: #333;
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+}
+
 .form-wrap {
   position: relative;
   width: 90%;
@@ -191,18 +220,33 @@ body {
   width: 100%;
   border-collapse: collapse;
 }
-.res-birthdate-wrap .res-wrap .res-item,
-.res-name-wrap .res-wrap .res-item {
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap,
+.res-name-wrap .res-wrap .res-item-inner-wrap {
   margin-bottom: 6px;
   padding: 10px;
+  border-bottom: 1px solid #ededed;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
-  border-bottom: 1px solid #ededed;
 }
-.res-birthdate-wrap .res-wrap .res-item.block,
-.res-name-wrap .res-wrap .res-item.block {
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item.block,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item.block {
   display: block;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .shiki,
+.res-name-wrap .res-wrap .res-item-inner-wrap .shiki {
+  display: block;
+  text-align: left;
+  font-size: 1.8rem;
+  color: gray;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .ans,
+.res-name-wrap .res-wrap .res-item-inner-wrap .ans {
+  font-size: 2rem;
+  font-weight: 600;
 }
 .res-birthdate-wrap .res-wrap .res-ttl,
 .res-name-wrap .res-wrap .res-ttl {
@@ -280,6 +324,10 @@ body {
   font-weight: 600;
   text-align: left;
   padding-left: 20px;
+}
+.res-birthdate-wrap .res-wrap .res-contents--sub div,
+.res-name-wrap .res-wrap .res-contents--sub div {
+  padding: 4px;
 }
 
 .img-convert-table {

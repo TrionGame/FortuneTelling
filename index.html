@@ -44,31 +44,43 @@
     </div>
 
     <div class="results-wrap">
-        <div class="back-link input" >
+        <div class="back-link input">
             <a id="backInput" href="index.html">入力に戻る</a>
-            <span ></span>
+            <span></span>
         </div>
-        <h2>▼結果</h2>
+        <h2 class="h-res-ttl"><span>結果</span></h2>
         <div class="res-birthdate-wrap">
             <div class="ttl">生年月日：<span class="inputed-birthdate" id="inputedBirthdate"></span></div>
             <div class="res-wrap">
-                <div class="res-item">
-                    <div class="res-ttl">＊ベース:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
-                                id="valBase" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valBase_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊ベース:</div>
+                        <div class="res-contents">
+                            <span class="icon-wrap"><i class="fa-regular fa-circle"></i>
+                                <span id="valBase" class="ans-val"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <span id="valBase_shiki" class="shiki">
+                    </span>
                 </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊メイン:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
-                                id="valMain" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valMain_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊メイン:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
+                                    id="valMain" class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valMain_shiki" class="shiki"></span>
                 </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊チャレンジ:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
-                                id="valChal" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valChal_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊チャレンジ:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
+                                    id="valChal" class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valChal_shiki" class="shiki"></span>
                 </div>
             </div>
         </div>
@@ -76,48 +88,69 @@
             <div class="ttl">名前：<span class="inputed-name" id="inputedName"></span><br class="br-sp">(<span
                     id="inputedConvertedString"></span>)</div>
             <div class="res-wrap">
-                <div class="res-item">
-                    <div class="res-ttl">＊道:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
-                                id="valMichi" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valMichi_shiki"></span></div>
-                </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊到達:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
-                                id="valReach" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valReach_shiki"></span></div>
-                </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊ハート:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-heart"></i><span
-                                id="valHeart" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valHeart_shiki"></span></div>
-                </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊ペルソナ:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i
-                                class="fa-regular fa-heart upside-down"></i><span id="valPer"
-                                class="ans-val"></span></span><br class="br-sp"><span id="valPer_shiki"></span></div>
-                </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊ウイーク:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"></i><span
-                                id="valWeak" class="ans-val"></span></span><br class="br-sp"><span
-                            id="valWeak_shiki"></span></div>
-                </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊欠落:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"
-                                style="display: none;"></i><span id="valMiss" class="ans-val"></span></span><br
-                            class="br-sp"><span id="valMiss_shiki"></span>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊道:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
+                                    id="valMichi" class="ans-val"></span></span>
+                        </div>
                     </div>
+                    <span id="valMichi_shiki" class="shiki"></span>
                 </div>
-                <div class="res-item">
-                    <div class="res-ttl">＊特性:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"
-                                style="display: none;"></i><span id="valCharacter" class="ans-val"></span></span><span
-                            id="valCharacter"></span>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊到達:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
+                                    id="valReach" class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valReach_shiki" class="shiki"></span>
+                </div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊ハート:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-heart"></i><span
+                                    id="valHeart" class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valHeart_shiki" class="shiki"></span>
+                </div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊ペルソナ:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i
+                                    class="fa-regular fa-heart upside-down"></i><span id="valPer"
+                                    class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valPer_shiki" class="shiki"></span>
+                </div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊ウイーク:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i
+                                    class="fa-regular fa-square angle45"></i><span id="valWeak"
+                                    class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valWeak_shiki" class="shiki"></span>
+                </div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊欠落:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"
+                                    style="display: none;"></i><span id="valMiss" class="ans-val"></span></span>
+                        </div>
+                    </div>
+                    <span id="valMiss_shiki" class="shiki"></span>
+                </div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊特性:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"
+                                    style="display: none;"></i><span id="valCharacter"
+                                    class="ans-val"></span></span><span id="valCharacter"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="res-contents--sub">
@@ -136,63 +169,93 @@
         </div>
         <div class="res-name-wrap">
             <div class="res-wrap">
-                <div class="res-item">
-                    <div class="res-ttl">＊イヤーナンバー:</div>
-                    <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square"></i><span
-                                id="valYearNum" class="ans-val"></span></span><span id="valYearNum_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item">
+                        <div class="res-ttl">＊イヤーナンバー:</div>
+                        <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square"></i><span
+                                    id="valYearNum" class="ans-val"></span></span><span id="valYearNum_shiki"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="res-name-wrap">
             <div class="res-wrap">
-                <div class="res-item block">
-                    <div class="res-ttl w100">＊フォーディメンション：バランス</div>
-                    <div class="res-contents w100">
-                        <div class="res-contents--sub">
-                            <div class="fw-normal">-身体：<span id="val4D_1_ans"></span> | <span id="val4D_1_shiki"></span></div>
-                            <div class="fw-normal">-精神：<span id="val4D_2_ans"></span> | <span id="val4D_2_shiki"></span></div>
-                            <div class="fw-normal">-感情：<span id="val4D_3_ans"></span> | <span id="val4D_3_shiki"></span></div>
-                            <div class="fw-normal">-直感：<span id="val4D_4_ans"></span> | <span id="val4D_4_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item block">
+                        <div class="res-ttl w100">＊フォーディメンション：バランス</div>
+                        <div class="res-contents w100">
+                            <div class="res-contents--sub">
+                                <div class="fw-normal">-身体：<span id="val4D_1_ans" class="ans"></span><span
+                                        id="val4D_1_shiki" class="shiki"></span>
+                                </div>
+                                <div class="fw-normal">-精神：<span id="val4D_2_ans" class="ans"></span><span
+                                        id="val4D_2_shiki" class="shiki"></span>
+                                </div>
+                                <div class="fw-normal">-感情：<span id="val4D_3_ans" class="ans"></span><span
+                                        id="val4D_3_shiki" class="shiki"></span>
+                                </div>
+                                <div class="fw-normal">-直感：<span id="val4D_4_ans" class="ans"></span><span
+                                        id="val4D_4_shiki" class="shiki"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="res-item block">
-                    <div class="res-ttl w100">＊メジャーサイクルナンバー：追い風</div>
-                    <div class="res-contents w100">
-                        <div class="res-contents--sub">
-                            <div class="fw-normal">①ファースト：<span id="valMajor_1_ans"></span> | <span id="valMajor_1_shiki"></span></div>
-                            <div class="fw-normal">②セカンド：<span id="valMajor_2_ans"></span> | <span id="valMajor_2_shiki"></span></div>
-                            <div class="fw-normal">③サード：<span id="valMajor_3_ans"></span> | <span id="valMajor_3_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item block">
+                        <div class="res-ttl w100">＊メジャーサイクルナンバー：追い風</div>
+                        <div class="res-contents w100">
+                            <div class="res-contents--sub">
+                                <div class="fw-normal">①ファースト：<span id="valMajor_1_ans" class="ans"></span><span
+                                        id="valMajor_1_shiki" class="shiki"></span></div> 
+                                <div class="fw-normal">②セカンド：<span id="valMajor_2_ans" class="ans"></span><span
+                                        id="valMajor_2_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">③サード：<span id="valMajor_3_ans" class="ans"></span><span
+                                        id="valMajor_3_shiki" class="shiki"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="res-item block">
-                    <div class="res-ttl w100">＊ピナクルナンバー：登る山</div>
-                    <div class="res-contents w100">
-                        <div class="res-contents--sub">
-                            <div class="fw-normal">①ファースト：<span id="valPinnacle_1_ans"></span> | <span id="valPinnacle_1_shiki"></span></div>
-                            <div class="fw-normal">②セカンド：<span id="valPinnacle_2_ans"></span> | <span id="valPinnacle_2_shiki"></span></div>
-                            <div class="fw-normal">③サード：<span id="valPinnacle_3_ans"></span> | <span id="valPinnacle_3_shiki"></span></div>
-                            <div class="fw-normal">④フォース：<span id="valPinnacle_4_ans"></span> | <span id="valPinnacle_4_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item block">
+                        <div class="res-ttl w100">＊ピナクルナンバー：登る山</div>
+                        <div class="res-contents w100">
+                            <div class="res-contents--sub">
+                                <div class="fw-normal">①ファースト：<span id="valPinnacle_1_ans" class="ans"></span><span
+                                        id="valPinnacle_1_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">②セカンド：<span id="valPinnacle_2_ans" class="ans"></span><span
+                                        id="valPinnacle_2_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">③サード：<span id="valPinnacle_3_ans" class="ans"></span><span
+                                        id="valPinnacle_3_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">④フォース：<span id="valPinnacle_4_ans" class="ans"></span><span
+                                        id="valPinnacle_4_shiki" class="shiki"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="res-item block">
-                    <div class="res-ttl w100">＊チャレンジナンバー：助け杖</div>
-                    <div class="res-contents w100">
-                        <div class="res-contents--sub">
-                            <div class="fw-normal">①ファースト：<span id="valChallenge_1_ans"></span> | <span id="valChallenge_1_shiki"></span></div>
-                            <div class="fw-normal">②セカンド：<span id="valChallenge_2_ans"></span> | <span id="valChallenge_2_shiki"></span></div>
-                            <div class="fw-normal">③サード：<span id="valChallenge_3_ans"></span> | <span id="valChallenge_3_shiki"></span></div>
-                            <div class="fw-normal">④フォース：<span id="valChallenge_4_ans"></span> | <span id="valChallenge_4_shiki"></span></div>
+                <div class="res-item-inner-wrap">
+                    <div class="res-item block">
+                        <div class="res-ttl w100">＊チャレンジナンバー：助け杖</div>
+                        <div class="res-contents w100">
+                            <div class="res-contents--sub">
+                                <div class="fw-normal">①ファースト：<span id="valChallenge_1_ans" class="ans"></span><span
+                                        id="valChallenge_1_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">②セカンド：<span id="valChallenge_2_ans" class="ans"></span><span
+                                        id="valChallenge_2_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">③サード：<span id="valChallenge_3_ans" class="ans"></span><span
+                                        id="valChallenge_3_shiki" class="shiki"></span></div>
+                                <div class="fw-normal">④フォース：<span id="valChallenge_4_ans" class="ans"></span><span
+                                        id="valChallenge_4_shiki" class="shiki"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="back-link input" >
+        <div class="back-link input">
             <a id="backInput_bottom" href="index.html">入力に戻る</a>
-            <span ></span>
+            <span></span>
         </div>
     </div>
     <script src="./assets/js/index.js"></script>
