@@ -242,6 +242,7 @@ body {
   text-align: left;
   font-size: 1.8rem;
   color: gray;
+  padding-left: 10px;
 }
 .res-birthdate-wrap .res-wrap .res-item-inner-wrap .ans,
 .res-name-wrap .res-wrap .res-item-inner-wrap .ans {
