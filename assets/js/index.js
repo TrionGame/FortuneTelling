@@ -1,4 +1,21 @@
 $(document).ready(function () {
+
+    // 表を開くトリガーがクリックされたとき
+    $('.popup-trigger').click(function () {
+        // ポップアップを表示
+        $('#popupOverlay').fadeIn();
+    });
+
+    // 背景をタップしたとき
+    $('#popupOverlay').click(function (event) {
+        // クリックされた要素がポップアップ自体でない場合、ポップアップを非表示
+        if (event.target.id === 'popupOverlay') {
+            $(this).fadeOut();
+        }
+    });
+
+
+
     $("#calcBtn").click(function () {
         console.log("▼Start Calc.");
         let errMsg = [];
@@ -26,6 +43,21 @@ $(document).ready(function () {
                 $("#errorMessages").append("<p>" + errMsg[i] + "</p>");
             }
         } else {
+            const numKeyWord = {
+                0: '',
+                1: '自信、積極的',
+                2: '共感、優しさ',
+                3: '楽しむ、味わう',
+                4: '安定、形にする',
+                5: '自由、動かす',
+                6: '愛情、家族',
+                7: '真実、極める',
+                8: '情熱、豊かさ',
+                9: '知恵、皆の為に',
+                11: '宇宙と繋がる',
+                22: '宇宙と創造する',
+                33: '愛、宇宙そのもの',
+            };
             const numToCircleNum = {
                 0: '⓪',
                 1: '①',
@@ -45,37 +77,51 @@ $(document).ready(function () {
             var result = calculateDigits(birthdate);
             $("#valBase").text(result.sumDay.cntSum);
             $("#valBase_shiki").text(result.sumDay.expression);
-            $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]" + result.sumDay.expression);
+            $("#valBase_keyWord").text(numKeyWord[result.sumDay.cntSum]);
+            // $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]" + result.sumDay.expression);
+            $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]");
             $("#valMajor_2_ans").text(numToCircleNum[result.sumDay.cntSum]);
             $("#valMajor_1_ans").text(numToCircleNum[result.sumBirthMonth.cntSum]);
-            $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
+            // $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
+            $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]");
             $("#valMajor_3_ans").text(numToCircleNum[result.sumBirthYear.cntSum]);
-            $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]" + result.sumBirthYear.expression);
+            // $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]" + result.sumBirthYear.expression);
+            $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]");
             $("#valMain").text(result.sumBirthdate.cntSum);
             $("#valMain_shiki").text(result.sumBirthdate.expression);
+            $("#valMain_keyWord").text(numKeyWord[result.sumBirthdate.cntSum]);
             $("#valChal").text(result.sumBdate.cntSum);
             $("#valChal_shiki").text(result.sumBdate.expression);
+            $("#valChal_keyWord").text(numKeyWord[result.sumBdate.cntSum]);
             $("#valYearNum").text(result.yearSum);
 
-          
+
 
             $("#valPinnacle_1_ans").text(numToCircleNum[result.sumBdate.cntSum]);
-            $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange + result.pinacleArr.pnFirst.pnFirstVal.expression);
+            // $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange + result.pinacleArr.pnFirst.pnFirstVal.expression);
+            $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange);
             $("#valPinnacle_2_ans").text(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum]);
-            $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange + result.pinacleArr.pnSecond.pnSecondVal.expression);
+            // $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange + result.pinacleArr.pnSecond.pnSecondVal.expression);
+            $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange);
             $("#valPinnacle_3_ans").text(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum]);
-            $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange + result.pinacleArr.pnThird.pnThirdVal.expression);
+            // $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange + result.pinacleArr.pnThird.pnThirdVal.expression);
+            $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange);
             $("#valPinnacle_4_ans").text(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]);
-            $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
+            // $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
+            $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange );
 
             $("#valChallenge_1_ans").text(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]);
-            $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
+            // $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
+            $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange);
             $("#valChallenge_2_ans").text(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum]);
-            $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange + result.challengeArr.chSecond.chSecondVal.expression);
+            // $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange + result.challengeArr.chSecond.chSecondVal.expression);
+            $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange);
             $("#valChallenge_3_ans").text(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum]);
-            $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange + result.challengeArr.chThird.chThirdVal.expression);
+            // $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange + result.challengeArr.chThird.chThirdVal.expression);
+            $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange);
             $("#valChallenge_4_ans").text(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum]);
-            $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange + result.challengeArr.chFourth.chFourthVal.expression);
+            // $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange + result.challengeArr.chFourth.chFourthVal.expression);
+            $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange);
 
             var resultName = convertStringToNumberWithConditions(name, birthdate);
 
@@ -83,16 +129,26 @@ $(document).ready(function () {
             $("#inputedConvertedString").text(resultName.convertedString);
             $("#valMichi").text(resultName.sumMichi.cntSum);
             $("#valMichi_shiki").text(resultName.sumMichi.expression);
+            $("#valMichi_keyWord").text(numKeyWord[resultName.sumMichi.cntSum]);
+            
             $("#valReach").text(resultName.sumReach.cntSum);
             $("#valReach_shiki").text(resultName.sumReach.expression);
+            $("#valReach_keyWord").text(numKeyWord[resultName.sumReach.cntSum]);
+            
             $("#valHeart").text(resultName.sumHeart.cntSum);
             $("#valHeart_shiki").text(resultName.sumHeart.expression);
+            $("#valHeart_keyWord").text(numKeyWord[resultName.sumHeart.cntSum]);
+            
             $("#valPer").text(resultName.sumPersona.cntSum);
             $("#valPer_shiki").text(resultName.sumPersona.expression);
+            $("#valPer_keyWord").text(numKeyWord[resultName.sumPersona.cntSum]);
+            
             $("#valWeak").text(resultName.sumCntString.cntSum);
             $("#valWeak_shiki").text(resultName.sumCntString.expression);
+            $("#valWeak_keyWord").text(numKeyWord[resultName.sumCntString.cntSum]);
             $("#valMiss").text("(" + resultName.missingNumbers + ")");
             $("#valCharacter").text("\"" + resultName.valCharacter + "\"");
+            $("#valCharacter_keyWord").text(numKeyWord[resultName.valCharacter]);
             // $("#valCharacter").text(resultName.yearSum);
             $("#cntOne").text(resultName.digitCounts[1]);
             $("#cntTwo").text(resultName.digitCounts[2]);
@@ -220,18 +276,18 @@ $(document).ready(function () {
 
 });
 
-$(function(){
+$(function () {
     var pagetop = $('#page-top');
     pagetop.hide();
     $(window).scroll(function () {
-       if ($(this).scrollTop() > 100) {
+        if ($(this).scrollTop() > 100) {
             pagetop.fadeIn();
-       } else {
+        } else {
             pagetop.fadeOut();
-       }
+        }
     });
     pagetop.click(function () {
-       $('body, html').animate({ scrollTop: 0 }, 500);
-       return false;
+        $('body, html').animate({ scrollTop: 0 }, 500);
+        return false;
     });
-  });
+});

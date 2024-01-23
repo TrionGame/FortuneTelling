@@ -36,13 +36,20 @@
                 <p class="input-hosoku">英字で入力してください。(例)YAMADATARO</p>
             </div>
             <div class="hosoku-wrap">
-                ※ヘボン式ローマ字の票はこちら<a href="convert_table.html" target="_blank">クリック</a>
+                ※ヘボン式ローマ字の表はこちら<a href="convert_table.html" target="_blank">クリック</a>
+                <!-- ※ヘボン式ローマ字の表はこちら<div class="popup-trigger">クリック</div> -->
             </div>
             <div id="errorMessages"></div>
             <button class="calc-btn" id="calcBtn" type="button"><span>計算する</span></button>
 
         </form>
 
+    </div>
+    <div class="popup-overlay" id="popupOverlay">
+        <!-- ポップアップのコンテンツ -->
+        <div class="popup-content">
+            <img class="img-convert-table popup-image" src="./assets/images/convert_table01.png" alt="アルファベット変換表">
+        </div>
     </div>
 
     <div class="results-wrap">
@@ -56,33 +63,39 @@
             <div class="res-wrap">
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊ベース:</div>
+                        <div class="res-ttl">＊ベース(最初に使う):</div>
                         <div class="res-contents">
                             <span class="icon-wrap"><i class="fa-regular fa-circle"></i>
                                 <span id="valBase" class="ans-val"></span>
                             </span>
+                            <span id="valBase_keyWord" class="ans-keyword">
+                            </span>
                         </div>
                     </div>
-                    <span id="valBase_shiki" class="shiki">
+                    <span id="valBase_shiki" class="shiki no-display">
                     </span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊メイン:</div>
+                        <div class="res-ttl">＊メイン(人生の70%):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
                                     id="valMain" class="ans-val"></span></span>
+
+                            <span id="valMain_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valMain_shiki" class="shiki"></span>
+                    <span id="valMain_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊チャレンジ:</div>
+                        <div class="res-ttl">＊チャレンジ(扉が開く鍵):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
                                     id="valChal" class="ans-val"></span></span>
+
+                            <span id="valChal_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valChal_shiki" class="shiki"></span>
+                    <span id="valChal_shiki" class="shiki no-display"></span>
                 </div>
             </div>
         </div>
@@ -92,50 +105,60 @@
             <div class="res-wrap">
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊道:</div>
+                        <div class="res-ttl">＊道(魂の願望):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
                                     id="valMichi" class="ans-val"></span></span>
+
+                            <span id="valMichi_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valMichi_shiki" class="shiki"></span>
+                    <span id="valMichi_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊到達:</div>
+                        <div class="res-ttl">＊到達(目的地):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-circle"></i><span
                                     id="valReach" class="ans-val"></span></span>
+
+                            <span id="valReach_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valReach_shiki" class="shiki"></span>
+                    <span id="valReach_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊ハート:</div>
+                        <div class="res-ttl">＊ハート(原動力):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-heart"></i><span
                                     id="valHeart" class="ans-val"></span></span>
+
+                            <span id="valHeart_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valHeart_shiki" class="shiki"></span>
+                    <span id="valHeart_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊ペルソナ:</div>
+                        <div class="res-ttl">＊ペルソナ(印象):</div>
                         <div class="res-contents"><span class="icon-wrap"><i
                                     class="fa-regular fa-heart upside-down"></i><span id="valPer"
                                     class="ans-val"></span></span>
+
+                            <span id="valPer_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valPer_shiki" class="shiki"></span>
+                    <span id="valPer_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊ウイーク:</div>
+                        <div class="res-ttl">＊ウイーク(苦手):</div>
                         <div class="res-contents"><span class="icon-wrap"><i
                                     class="fa-regular fa-square angle45"></i><span id="valWeak"
                                     class="ans-val"></span></span>
+
+                            <span id="valWeak_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
-                    <span id="valWeak_shiki" class="shiki"></span>
+                    <span id="valWeak_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
@@ -144,18 +167,20 @@
                                     style="display: none;"></i><span id="valMiss" class="ans-val"></span></span>
                         </div>
                     </div>
-                    <span id="valMiss_shiki" class="shiki"></span>
+                    <span id="valMiss_shiki" class="shiki no-display"></span>
                 </div>
                 <div class="res-item-inner-wrap">
                     <div class="res-item">
-                        <div class="res-ttl">＊特性:</div>
+                        <div class="res-ttl">＊特性(得意):</div>
                         <div class="res-contents"><span class="icon-wrap"><i class="fa-regular fa-square angle45"
                                     style="display: none;"></i><span id="valCharacter"
                                     class="ans-val"></span></span><span id="valCharacter"></span>
+
+                            <span id="valCharacter_keyWord" class="ans-keyword"></span>
                         </div>
                     </div>
                 </div>
-                <div class="res-contents--sub">
+                <div class="res-contents--sub no-display">
                     <div>-1 ( <span id="cntOne"></span>/5 )</div>
                     <div>-2 ( <span id="cntTwo"></span>/3 )</div>
                     <div>-3 ( <span id="cntThree"></span>/4 )</div>
@@ -189,16 +214,16 @@
                         <div class="res-contents w100">
                             <div class="res-contents--sub">
                                 <div class="fw-normal">-身体：<span id="val4D_1_ans" class="ans"></span><span
-                                        id="val4D_1_shiki" class="shiki"></span>
+                                        id="val4D_1_shiki" class="shiki no-display"></span>
                                 </div>
                                 <div class="fw-normal">-精神：<span id="val4D_2_ans" class="ans"></span><span
-                                        id="val4D_2_shiki" class="shiki"></span>
+                                        id="val4D_2_shiki" class="shiki no-display"></span>
                                 </div>
                                 <div class="fw-normal">-感情：<span id="val4D_3_ans" class="ans"></span><span
-                                        id="val4D_3_shiki" class="shiki"></span>
+                                        id="val4D_3_shiki" class="shiki no-display"></span>
                                 </div>
                                 <div class="fw-normal">-直感：<span id="val4D_4_ans" class="ans"></span><span
-                                        id="val4D_4_shiki" class="shiki"></span>
+                                        id="val4D_4_shiki" class="shiki no-display"></span>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +235,7 @@
                         <div class="res-contents w100">
                             <div class="res-contents--sub">
                                 <div class="fw-normal">①ファースト：<span id="valMajor_1_ans" class="ans"></span><span
-                                        id="valMajor_1_shiki" class="shiki"></span></div> 
+                                        id="valMajor_1_shiki" class="shiki"></span></div>
                                 <div class="fw-normal">②セカンド：<span id="valMajor_2_ans" class="ans"></span><span
                                         id="valMajor_2_shiki" class="shiki"></span></div>
                                 <div class="fw-normal">③サード：<span id="valMajor_3_ans" class="ans"></span><span
