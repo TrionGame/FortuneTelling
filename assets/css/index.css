@@ -325,6 +325,11 @@ body {
   right: 50%;
   transform: translate(50%, -50%);
 }
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap .ans-val.p-rel,
+.res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val.p-rel {
+  position: relative;
+  display: block;
+}
 .res-birthdate-wrap .res-wrap .res-contents--sub,
 .res-name-wrap .res-wrap .res-contents--sub {
   font-size: 2rem;
