@@ -232,7 +232,6 @@ body {
 }
 .res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item,
 .res-name-wrap .res-wrap .res-item-inner-wrap .res-item {
-  display: flex;
   justify-content: flex-start;
   align-items: baseline;
 }
@@ -263,7 +262,6 @@ body {
   font-weight: 500;
   line-height: 1.8;
   text-align: left;
-  width: 40%;
 }
 .res-birthdate-wrap .res-wrap .res-ttl.w100,
 .res-name-wrap .res-wrap .res-ttl.w100 {
@@ -274,7 +272,8 @@ body {
   font-size: 1.6rem;
   line-height: 1.8;
   text-align: left;
-  width: 60%;
+  margin-top: 10px;
+  padding-bottom: 10px;
 }
 .res-birthdate-wrap .res-wrap .res-contents.w100,
 .res-name-wrap .res-wrap .res-contents.w100 {
