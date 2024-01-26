@@ -80,6 +80,7 @@ body {
   display: block;
   font-size: 1.6rem;
   text-align: left;
+  margin-bottom: 6px;
 }
 .form-wrap form .input-item input {
   width: 100%;
@@ -329,6 +330,11 @@ body {
 .res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val.p-rel {
   position: relative;
   display: block;
+}
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap .ans-val.ajst,
+.res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val.ajst {
+  width: 100%;
+  text-align: center;
 }
 .res-birthdate-wrap .res-wrap .res-contents--sub,
 .res-name-wrap .res-wrap .res-contents--sub {

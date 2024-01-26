@@ -108,7 +108,7 @@ $(document).ready(function () {
             $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange);
             $("#valPinnacle_4_ans").text(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]);
             // $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
-            $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange );
+            $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange);
 
             $("#valChallenge_1_ans").text(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]);
             // $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
@@ -130,25 +130,41 @@ $(document).ready(function () {
             $("#valMichi").text(resultName.sumMichi.cntSum);
             $("#valMichi_shiki").text(resultName.sumMichi.expression);
             $("#valMichi_keyWord").text(numKeyWord[resultName.sumMichi.cntSum]);
-            
+
             $("#valReach").text(resultName.sumReach.cntSum);
             $("#valReach_shiki").text(resultName.sumReach.expression);
             $("#valReach_keyWord").text(numKeyWord[resultName.sumReach.cntSum]);
-            
+
             $("#valHeart").text(resultName.sumHeart.cntSum);
             $("#valHeart_shiki").text(resultName.sumHeart.expression);
             $("#valHeart_keyWord").text(numKeyWord[resultName.sumHeart.cntSum]);
-            
+
             $("#valPer").text(resultName.sumPersona.cntSum);
             $("#valPer_shiki").text(resultName.sumPersona.expression);
             $("#valPer_keyWord").text(numKeyWord[resultName.sumPersona.cntSum]);
-            
+
             $("#valWeak").text(resultName.sumCntString.cntSum);
             $("#valWeak_shiki").text(resultName.sumCntString.expression);
             $("#valWeak_keyWord").text(numKeyWord[resultName.sumCntString.cntSum]);
             $("#valMiss").text("(" + resultName.missingNumbers + ")");
             $("#valCharacter").text("\"" + resultName.valCharacter + "\"");
+            // カンマ区切りの文字列から数字を抽出する関数
+            function extractNumbers(inputString) {
+                return inputString.split(',').map(Number);
+            }
+
+            var numbers = extractNumbers(resultName.valCharacter);
+            var outputText = "";
+            // 各数字に対応する処理を行う
+            numbers.forEach(function (number,index) {
+                outputText += numKeyWord[number];
+                if (index < numbers.length - 1) {
+                    outputText += " / ";
+                }
+            });
+            console.log(outputText);
             $("#valCharacter_keyWord").text(numKeyWord[resultName.valCharacter]);
+            $("#valCharacter_keyWord").text(outputText);
             // $("#valCharacter").text(resultName.yearSum);
             $("#cntOne").text(resultName.digitCounts[1]);
             $("#cntTwo").text(resultName.digitCounts[2]);

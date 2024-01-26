@@ -10,7 +10,8 @@ let res = isDoublesInArray(inputValue, doublesTargetArray);
 function calcEachNum(num) {
     let cntSum = 0;
     let expression = "";
-    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    // let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    let doublesTargetArray = [11, 22, 33];
 
     //引数が８桁(生年月日の場合)
     if (num.length == 8) {
@@ -27,30 +28,30 @@ function calcEachNum(num) {
                 expression += " + "; // 最後の桁以外に "+" を追加
             }
         }
-        
+
         //月
         if (isDoublesInArray(birth_month, doublesTargetArray)) {
             cntSum += parseInt(birth_month);
-            expression += "+"+birth_month;
-        }else{
+            expression += "+" + birth_month;
+        } else {
             for (var i = 0; i < birth_month.length; i++) {
                 cntSum += parseInt(birth_month[i]);
                 expression += birth_month[i]; // 式に各桁の数字を追加
-                
+
                 if (i < birth_month.length - 1) {
                     expression += " + "; // 最後の桁以外に "+" を追加
                 }
             }
-        }        
-        
+        }
+
         if (isDoublesInArray(birth_day, doublesTargetArray)) {
             cntSum += parseInt(birth_day);
-            expression += "+"+birth_day;
-        }else{
+            expression += "+" + birth_day;
+        } else {
             for (var i = 0; i < birth_day.length; i++) {
                 cntSum += parseInt(birth_day[i]);
                 expression += birth_day[i]; // 式に各桁の数字を追加
-                
+
                 if (i < birth_day.length - 1) {
                     expression += " + "; // 最後の桁以外に "+" を追加
                 }
@@ -62,35 +63,35 @@ function calcEachNum(num) {
             cntSum += parseInt(cntSumString[i]);
         }
     }
-    else if(num.length == 4){//４桁の場合(誕生月日)
+    else if (num.length == 4) {//４桁の場合(誕生月日)
         let birth_month = num.substr(0, 2);//生まれ月
         let birth_day = num.substr(2, 2);//生まれ日
 
         //月
         if (isDoublesInArray(birth_month, doublesTargetArray)) {
             cntSum += parseInt(birth_month);
-            expression += "+"+birth_month;
+            expression += "+" + birth_month;
             console.log("4keta1");
-        }else{
+        } else {
             for (var i = 0; i < birth_month.length; i++) {
                 cntSum += parseInt(birth_month[i]);
                 expression += birth_month[i]; // 式に各桁の数字を追加
-                
+
                 if (i < birth_month.length - 1) {
                     expression += " + "; // 最後の桁以外に "+" を追加
                 }
             }
         }
-        
+
         if (isDoublesInArray(birth_day, doublesTargetArray)) {
             cntSum += parseInt(birth_day);
-            expression += "+"+birth_day;
+            expression += "+" + birth_day;
             console.log("4keta2");
-        }else{
+        } else {
             for (var i = 0; i < birth_day.length; i++) {
                 cntSum += parseInt(birth_day[i]);
                 expression += birth_day[i]; // 式に各桁の数字を追加
-                
+
                 if (i < birth_day.length - 1) {
                     expression += " + "; // 最後の桁以外に "+" を追加
                 }
@@ -103,21 +104,21 @@ function calcEachNum(num) {
                 cntSum += parseInt(cntSumString[i]);
             }
 
-        }else{
+        } else {
             cntSum = cntSumString;
         }
-    } else if(num.length == 2){//2桁の場合(月or日)
+    } else if (num.length == 2) {//2桁の場合(月or日)
         let birth_data = num.substr(0, 2);//生まれ月
 
         //月
         if (isDoublesInArray(birth_data, doublesTargetArray)) {
             cntSum += parseInt(birth_data);
-            expression += "+"+birth_data;
-        }else{
+            expression += "+" + birth_data;
+        } else {
             for (var i = 0; i < birth_data.length; i++) {
                 cntSum += parseInt(birth_data[i]);
                 expression += birth_data[i]; // 式に各桁の数字を追加
-                
+
                 if (i < birth_data.length - 1) {
                     expression += " + "; // 最後の桁以外に "+" を追加
                 }
@@ -130,21 +131,33 @@ function calcEachNum(num) {
                 cntSum += parseInt(cntSumString[i]);
             }
 
-        }else{
+        } else {
             cntSum = cntSumString;
         }
     }
-    else{
+    else {
+        console.log("name=>Num");
         for (var i = 0; i < num.length; i++) {
             cntSum += parseInt(num[i]);
             if (num[i] == 0) {
                 continue;
             }
             expression += num[i]; // 式に各桁の数字を追加
-    
+
             if (i < num.length - 1) {
                 expression += " + "; // 最後の桁以外に "+" を追加
             }
+        }
+
+        let cntSumString = cntSum.toLocaleString();
+        cntSum = 0;
+        if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
+            for (var i = 0; i < cntSumString.length; i++) {
+                cntSum += parseInt(cntSumString[i]);
+            }
+
+        } else {
+            cntSum = cntSumString;
         }
     }
 
