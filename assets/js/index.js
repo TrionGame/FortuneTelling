@@ -17,7 +17,6 @@ $(document).ready(function () {
 
 
     $("#calcBtn").click(function () {
-        console.log("▼Start Calc.");
         let errMsg = [];
         let birthdate = $("[name='birthdate']").val().replace(/\s/g, '');
         if (birthdate == "") {
@@ -82,6 +81,14 @@ $(document).ready(function () {
             $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]");
             $("#valMajor_2_ans").text(numToCircleNum[result.sumDay.cntSum]);
             $("#valMajor_1_ans").text(numToCircleNum[result.sumBirthMonth.cntSum]);
+            $("#graphMajorNum_1").text(result.sumBirthMonth.cntSum);
+
+            $("#graphMajorNum_2").text(result.sumDay.cntSum); 
+            $("#graphMajorNum_3").text(result.sumBirthYear.cntSum);
+            let calc_age = 36 - parseInt(result.sumBirthdate.cntSum);
+            $("#graphMajorAge_2").text(result.graphAgeData[result.sumBirthdate.cntSum][0]+"歳");
+            $("#graphMajorAge_3").text(result.graphAgeData[result.sumBirthdate.cntSum][2]+"歳");
+
             // $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
             $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]");
             $("#valMajor_3_ans").text(numToCircleNum[result.sumBirthYear.cntSum]);
@@ -98,28 +105,50 @@ $(document).ready(function () {
 
 
             $("#valPinnacle_1_ans").text(numToCircleNum[result.sumBdate.cntSum]);
+            $("#graphPinnacleNum_1").text(result.sumBdate.cntSum);
+            $("#graphPinnacleNum_1").text(result.sumBdate.cntSum);
+
+            // $("#graphPinnacleAge_2").text(parseInt(result.graphAgeData[result.sumDay.cntSum][1])+"歳");
+            $("#graphPinnacleAge_2").text(calc_age+"歳");
+            // $("#graphPinnacleAge_3").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+9)+"歳");
+            $("#graphPinnacleAge_3").text((parseInt(calc_age)+9)+"歳");
+            // $("#graphPinnacleAge_4").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+18)+"歳");
+            $("#graphPinnacleAge_4").text((parseInt(calc_age)+18)+"歳");
+            // $("#graphChallengeAge_2").text(parseInt(result.graphAgeData[result.sumDay.cntSum][1])+"歳");
+            $("#graphChallengeAge_2").text(parseInt(calc_age)+"歳");
+            // $("#graphChallengeAge_3").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+9)+"歳");
+            $("#graphChallengeAge_3").text((parseInt(calc_age)+9)+"歳");
+            // $("#graphChallengeAge_4").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+18)+"歳");
+            $("#graphChallengeAge_4").text((parseInt(calc_age)+18)+"歳");
             // $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange + result.pinacleArr.pnFirst.pnFirstVal.expression);
             $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange);
             $("#valPinnacle_2_ans").text(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum]);
+            $("#graphPinnacleNum_2").text(result.pinacleArr.pnSecond.pnSecondVal.cntSum);
             // $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange + result.pinacleArr.pnSecond.pnSecondVal.expression);
             $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange);
             $("#valPinnacle_3_ans").text(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum]);
+            $("#graphPinnacleNum_3").text(result.pinacleArr.pnThird.pnThirdVal.cntSum);
             // $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange + result.pinacleArr.pnThird.pnThirdVal.expression);
             $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange);
             $("#valPinnacle_4_ans").text(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]);
+            $("#graphPinnacleNum_4").text(result.pinacleArr.pnFourth.pnFourthVal.cntSum);
             // $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
             $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange);
 
             $("#valChallenge_1_ans").text(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]);
+            $("#graphChallengeNum_1").text(result.challengeArr.chFirst.chFirstVal.cntSum);
             // $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
             $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange);
             $("#valChallenge_2_ans").text(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum]);
+            $("#graphChallengeNum_2").text(result.challengeArr.chSecond.chSecondVal.cntSum);
             // $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange + result.challengeArr.chSecond.chSecondVal.expression);
             $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange);
             $("#valChallenge_3_ans").text(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum]);
+            $("#graphChallengeNum_3").text(result.challengeArr.chThird.chThirdVal.cntSum);
             // $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange + result.challengeArr.chThird.chThirdVal.expression);
             $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange);
             $("#valChallenge_4_ans").text(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum]);
+            $("#graphChallengeNum_4").text(result.challengeArr.chFourth.chFourthVal.cntSum);
             // $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange + result.challengeArr.chFourth.chFourthVal.expression);
             $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange);
 
@@ -162,7 +191,6 @@ $(document).ready(function () {
                     outputText += " / ";
                 }
             });
-            console.log(outputText);
             $("#valCharacter_keyWord").text(numKeyWord[resultName.valCharacter]);
             $("#valCharacter_keyWord").text(outputText);
             // $("#valCharacter").text(resultName.yearSum);

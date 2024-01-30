@@ -136,7 +136,7 @@ function calcEachNum(num) {
         }
     }
     else {
-        console.log("name=>Num");
+        // console.log("name=>Num");
         for (var i = 0; i < num.length; i++) {
             cntSum += parseInt(num[i]);
             if (num[i] == 0) {
@@ -279,6 +279,21 @@ function calculateDigits(birthdate) {
         22: ["0~32歳", "33~59歳", "60歳~"],
         33: ["0~30歳", "31~57歳", "58歳~"],
     };
+    let valuesTable_2 = {
+        1: ["26", "27", "53", "54"],
+        2: ["25", "26", "52", "53"],
+        3: ["33", "34", "60", "61"],
+        4: ["32", "33", "59", "60"],
+        5: ["31", "32", "58", "59"],
+        6: ["30", "31", "57", "58"],
+        7: ["29", "30", "56", "57"],
+        8: ["28", "29", "55", "56"],
+        9: ["27", "28", "54", "55"],
+        11: ["25", "26", "52", "53"],
+        22: ["32", "33", "59", "60"],
+        33: ["30", "31", "57", "58"],
+    };
+
     var rangeFirstVal = valuesTable[sumBirthdate.cntSum][0];
     var rangeSecondVal = valuesTable[sumBirthdate.cntSum][1];
     var rangeThirdVal = valuesTable[sumBirthdate.cntSum][2];
@@ -387,6 +402,7 @@ function calculateDigits(birthdate) {
         yearSum: yearSum,
         pinacleArr: pinacleArr,
         challengeArr: challengeArr,
+        graphAgeData:valuesTable_2,
     }
 }
 

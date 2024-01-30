@@ -180,7 +180,7 @@ body {
   text-align: left;
   font-size: 1.6rem;
   line-height: 1;
-  padding-left: 10px;
+  padding: 10px;
 }
 .results-wrap .back-link.input a {
   position: relative;
@@ -239,6 +239,58 @@ body {
 .res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item.block,
 .res-name-wrap .res-wrap .res-item-inner-wrap .res-item.block {
   display: block;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item {
+  margin-top: 50px;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item:first-child,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item:first-child {
+  margin-top: 0;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item:last-child,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item:last-child {
+  margin-bottom: 50px;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 10px auto;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item {
+  width: 33.3333333333%;
+  height: 80px;
+  position: relative;
+  background: #ededed;
+  color: gray;
+  border: 1px solid gray;
+  border-right: none;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item:last-child,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item:last-child {
+  border-right: 1px solid gray;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item.col-4,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item.col-4 {
+  width: 25%;
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item .num-val,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item .num-val {
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+.res-birthdate-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item .num-age,
+.res-name-wrap .res-wrap .res-item-inner-wrap .res-item .each-item .bar-inline-graph_flex-wrap .inner-each-item .num-age {
+  font-size: 1.6rem;
+  position: absolute;
+  bottom: -25px;
+  left: -10px;
 }
 .res-birthdate-wrap .res-wrap .res-item-inner-wrap .shiki,
 .res-name-wrap .res-wrap .res-item-inner-wrap .shiki {
