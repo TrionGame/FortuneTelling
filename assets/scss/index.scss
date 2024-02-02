@@ -262,6 +262,7 @@ body {
         .inputed-name {
             font-size: 2.4rem;
             margin-right: 10px;
+            word-wrap: break-word;
         }
     }
 
@@ -397,6 +398,9 @@ body {
                 height: 10px;
                 padding-left: 10px;
                 position: relative;
+                &.w100{
+                    width: 100%;
+                }
 
                 i {
                     position: absolute;
@@ -434,6 +438,15 @@ body {
                     &.ajst{
                         width: 100%;
                         text-align: center;
+                    }
+                }
+                &.w100{
+                    width: 100%;
+                    .ans-val{
+                        &.ajst{
+                            width: 100%;
+                            text-align: left;
+                        }
                     }
                 }
             }

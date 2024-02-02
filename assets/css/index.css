@@ -219,6 +219,7 @@ body {
 .res-name-wrap .ttl .inputed-name {
   font-size: 2.4rem;
   margin-right: 10px;
+  word-wrap: break-word;
 }
 .res-birthdate-wrap .res-wrap,
 .res-name-wrap .res-wrap {
@@ -351,6 +352,10 @@ body {
   padding-left: 10px;
   position: relative;
 }
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap.w100,
+.res-name-wrap .res-wrap .res-contents .icon-wrap.w100 {
+  width: 100%;
+}
 .res-birthdate-wrap .res-wrap .res-contents .icon-wrap i,
 .res-name-wrap .res-wrap .res-contents .icon-wrap i {
   position: absolute;
@@ -387,6 +392,15 @@ body {
 .res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val.ajst {
   width: 100%;
   text-align: center;
+}
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap.w100,
+.res-name-wrap .res-wrap .res-contents .icon-wrap.w100 {
+  width: 100%;
+}
+.res-birthdate-wrap .res-wrap .res-contents .icon-wrap.w100 .ans-val.ajst,
+.res-name-wrap .res-wrap .res-contents .icon-wrap.w100 .ans-val.ajst {
+  width: 100%;
+  text-align: left;
 }
 .res-birthdate-wrap .res-wrap .res-contents--sub,
 .res-name-wrap .res-wrap .res-contents--sub {
