@@ -2,6 +2,9 @@
 @import './_variables';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap');
 $breakpoint: 768px;
+$text-size-small: 1.6rem;
+$text-size-medium: 2.0rem;
+$text-size-large: 3.0rem;
 
 @mixin mediaPC {
     @media screen and (min-width: ($breakpoint)) {
@@ -251,9 +254,15 @@ body {
     margin-top: 40px;
 
     .ttl {
-        font-size: 1.8rem;
+        // font-size: 1.8rem;
+        font-size: $text-size-medium;
         line-height: 1.5;
         text-align: left;
+        border: 1px solid #ededed;
+        padding: 8px;
+        border-radius: 10px;
+        background: #333;
+        color: #FFF;
 
         .inputed-birthdate {
             font-size: 2.4rem;
@@ -346,29 +355,33 @@ body {
             }
 
             .ans {
-                font-size: 2.0rem;
+                font-size: 4rem;
                 font-weight: 600;
+                position: relative;
+                top: 8px;
 
             }
         }
 
 
         .res-ttl {
-            font-size: 1.6rem;
+            // font-size: 1.6rem;
+            font-size: $text-size-medium;
             font-weight: 500;
             line-height: 1.8;
             text-align: left;
             // width: 40%;
-
+            
             // display: inline-block;
             // padding: 10px;
             &.w100 {
                 width: 100%;
             }
         }
-
+        
         .res-contents {
-            font-size: 1.6rem;
+            // font-size: 1.6rem;
+            font-size: $text-size-medium;
             line-height: 1.8;
             text-align: left;
             // width: 60%;
@@ -387,7 +400,8 @@ body {
 
                 &.fw-normal {
                     font-weight: 500;
-                    font-size: 1.6rem;
+                    // font-size: 1.6rem;
+                    font-size: $text-size-medium;
                 }
             }
 
@@ -407,7 +421,7 @@ body {
                     top: 50%;
                     right: 50%;
                     transform: translate(50%, -50%);
-                    font-size: 3.6rem;
+                    font-size: 4.6rem;
                     color: #ddd;
 
                     &.upside-down {
@@ -423,7 +437,7 @@ body {
                 }
 
                 .ans-val {
-                    font-size: 2.0rem;
+                    font-size: $text-size-large;
                     line-height: 1.5;
                     font-weight: 600;
                     position: absolute;

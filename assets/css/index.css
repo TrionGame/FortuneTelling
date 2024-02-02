@@ -207,9 +207,14 @@ body {
 }
 .res-birthdate-wrap .ttl,
 .res-name-wrap .ttl {
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.5;
   text-align: left;
+  border: 1px solid #ededed;
+  padding: 8px;
+  border-radius: 10px;
+  background: #333;
+  color: #FFF;
 }
 .res-birthdate-wrap .ttl .inputed-birthdate,
 .res-name-wrap .ttl .inputed-birthdate {
@@ -307,12 +312,14 @@ body {
 }
 .res-birthdate-wrap .res-wrap .res-item-inner-wrap .ans,
 .res-name-wrap .res-wrap .res-item-inner-wrap .ans {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 600;
+  position: relative;
+  top: 8px;
 }
 .res-birthdate-wrap .res-wrap .res-ttl,
 .res-name-wrap .res-wrap .res-ttl {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 500;
   line-height: 1.8;
   text-align: left;
@@ -323,7 +330,7 @@ body {
 }
 .res-birthdate-wrap .res-wrap .res-contents,
 .res-name-wrap .res-wrap .res-contents {
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 1.8;
   text-align: left;
   margin-top: 10px;
@@ -342,7 +349,7 @@ body {
 .res-birthdate-wrap .res-wrap .res-contents div.fw-normal,
 .res-name-wrap .res-wrap .res-contents div.fw-normal {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 .res-birthdate-wrap .res-wrap .res-contents .icon-wrap,
 .res-name-wrap .res-wrap .res-contents .icon-wrap {
@@ -362,7 +369,7 @@ body {
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
-  font-size: 3.6rem;
+  font-size: 4.6rem;
   color: #ddd;
 }
 .res-birthdate-wrap .res-wrap .res-contents .icon-wrap i.upside-down,
@@ -375,7 +382,7 @@ body {
 }
 .res-birthdate-wrap .res-wrap .res-contents .icon-wrap .ans-val,
 .res-name-wrap .res-wrap .res-contents .icon-wrap .ans-val {
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 1.5;
   font-weight: 600;
   position: absolute;
