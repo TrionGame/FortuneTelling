@@ -110,7 +110,7 @@ function calcEachNum(num) {
             }
         }
         let cntSumString = cntSum.toLocaleString();
-        console.log(cntSumString);
+        // console.log(cntSumString);
         cntSum = 0;
         if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
             for (var i = 0; i < cntSumString.length; i++) {
@@ -546,17 +546,23 @@ function numBody(cnt4, cnt5) {
     let cntSum = 0;
     let expression = "";
     let cntSumValStr = cntSumVal.toString();
-    for (var i = 0; i < cntSumValStr.length; i++) {
-        cntSum += parseInt(cntSumValStr[i]);
-        expression += cntSumValStr[i]; // 式に各桁の数字を追加
-
-        if (i < cntSumValStr.length - 1) {
-            expression += " + "; // 最後の桁以外に "+" を追加
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    if (!isDoublesInArray(cntSumVal, doublesTargetArray)) {
+        for (var i = 0; i < cntSumValStr.length; i++) {
+            cntSum += parseInt(cntSumValStr[i]);
+            expression += cntSumValStr[i]; // 式に各桁の数字を追加
+    
+            if (i < cntSumValStr.length - 1) {
+                expression += " + "; // 最後の桁以外に "+" を追加
+            }
         }
+    }else{
+        cntSum = cntSumVal;
     }
     //ぞろ目チェック
-    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
+    console.log(cntSum);
+    console.log(doublesTargetArray);
     if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
             var tempCntSum = 0;
@@ -587,20 +593,24 @@ function numMind(cnt1, cnt8) {
     let cnt1Int = parseInt(cnt1);
     let cnt8Int = parseInt(cnt8);
     let cntSumVal = cnt1Int + cnt8Int;
-
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntSum = 0;
     let expression = "";
     let cntSumValStr = cntSumVal.toString();
-    for (var i = 0; i < cntSumValStr.length; i++) {
-        cntSum += parseInt(cntSumValStr[i]);
-        expression += cntSumValStr[i]; // 式に各桁の数字を追加
 
-        if (i < cntSumValStr.length - 1) {
-            expression += " + "; // 最後の桁以外に "+" を追加
+    if (!isDoublesInArray(cntSumVal, doublesTargetArray)) {
+        for (var i = 0; i < cntSumValStr.length; i++) {
+            cntSum += parseInt(cntSumValStr[i]);
+            expression += cntSumValStr[i]; // 式に各桁の数字を追加
+    
+            if (i < cntSumValStr.length - 1) {
+                expression += " + "; // 最後の桁以外に "+" を追加
+            }
         }
+    }else{
+        cntSum = cntSumVal;
     }
     //ぞろ目チェック
-    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
     if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
@@ -633,20 +643,23 @@ function numEmotion(cnt2, cnt3, cnt6) {
     let cnt3Int = parseInt(cnt3);
     let cnt6Int = parseInt(cnt6);
     let cntSumVal = cnt2Int + cnt3Int + cnt6Int;
-
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntSum = 0;
     let expression = "";
     let cntSumValStr = cntSumVal.toString();
-    for (var i = 0; i < cntSumValStr.length; i++) {
-        cntSum += parseInt(cntSumValStr[i]);
-        expression += cntSumValStr[i]; // 式に各桁の数字を追加
-
-        if (i < cntSumValStr.length - 1) {
-            expression += " + "; // 最後の桁以外に "+" を追加
+    if (!isDoublesInArray(cntSumVal, doublesTargetArray)) {
+        for (var i = 0; i < cntSumValStr.length; i++) {
+            cntSum += parseInt(cntSumValStr[i]);
+            expression += cntSumValStr[i]; // 式に各桁の数字を追加
+    
+            if (i < cntSumValStr.length - 1) {
+                expression += " + "; // 最後の桁以外に "+" を追加
+            }
         }
+    }else{
+        cntSum = cntSumVal;
     }
     //ぞろ目チェック
-    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
     if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
@@ -677,20 +690,23 @@ function numIntuition(cnt7, cnt9) {
     let cnt7Int = parseInt(cnt7);
     let cnt9Int = parseInt(cnt9);
     let cntSumVal = cnt7Int + cnt9Int;
-
+    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntSum = 0;
     let expression = "";
     let cntSumValStr = cntSumVal.toString();
-    for (var i = 0; i < cntSumValStr.length; i++) {
-        cntSum += parseInt(cntSumValStr[i]);
-        expression += cntSumValStr[i]; // 式に各桁の数字を追加
-
-        if (i < cntSumValStr.length - 1) {
-            expression += " + "; // 最後の桁以外に "+" を追加
+    if (!isDoublesInArray(cntSumVal, doublesTargetArray)) {
+        for (var i = 0; i < cntSumValStr.length; i++) {
+            cntSum += parseInt(cntSumValStr[i]);
+            expression += cntSumValStr[i]; // 式に各桁の数字を追加
+    
+            if (i < cntSumValStr.length - 1) {
+                expression += " + "; // 最後の桁以外に "+" を追加
+            }
         }
+    }else{
+        cntSum = cntSumVal;
     }
     //ぞろ目チェック
-    let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
     if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
