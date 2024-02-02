@@ -58,10 +58,22 @@ function calcEachNum(num) {
             }
         }
         let cntSumString = cntSum.toLocaleString();
+        // cntSum = 0;
+        // for (var i = 0; i < cntSumString.length; i++) {
+        //     cntSum += parseInt(cntSumString[i]);
+        // }
+
         cntSum = 0;
-        for (var i = 0; i < cntSumString.length; i++) {
-            cntSum += parseInt(cntSumString[i]);
+        if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
+            for (var i = 0; i < cntSumString.length; i++) {
+                cntSum += parseInt(cntSumString[i]);
+            }
+
+        } else {
+            cntSum = cntSumString;
         }
+
+
     }
     else if (num.length == 4) {//４桁の場合(誕生月日)
         let birth_month = num.substr(0, 2);//生まれ月
@@ -98,6 +110,7 @@ function calcEachNum(num) {
             }
         }
         let cntSumString = cntSum.toLocaleString();
+        console.log(cntSumString);
         cntSum = 0;
         if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
             for (var i = 0; i < cntSumString.length; i++) {
