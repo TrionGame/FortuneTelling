@@ -1,0 +1,415 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap");
+html {
+  font-size: 62.5%;
+  width: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  background-color: rgb(248, 248, 248);
+  background-color: #1d1b19;
+  background-color: #f7f7f7;
+  font-family: Garamond, "メイリオ", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gpthic", sans-serif;
+  font-weight: 500;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 2.4rem;
+  text-align: center;
+  margin: 0;
+}
+
+.breadcrumbs {
+  width: 90%;
+  text-align: left;
+  margin: 10px auto;
+  font-size: 1.4rem;
+}
+
+.entry-meta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+.entry-meta .date {
+  font-size: 1.4rem;
+}
+.entry-meta .cate ul {
+  margin: 0;
+  padding: 0;
+}
+.entry-meta .cate ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  background-color: #ededed;
+  color: gray;
+  border-radius: 6px;
+  padding: 6px 10px;
+  line-height: 1;
+}
+
+.post_tag a {
+  background-color: #ededed;
+  color: gray;
+  font-size: 1.2rem !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: 0.5 ease-in-out;
+}
+.post_tag a:hover {
+  transition: 0.5 ease-in-out;
+  background-color: gray;
+  background-color: #FFF;
+}
+
+.archive_link {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-align: right;
+  display: block;
+  width: 90%;
+  max-width: 800px;
+  margin: 10px auto 0;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+header {
+  position: fixed;
+  background-color: #f7f7f7;
+  color: #333;
+  z-index: 11;
+  width: 100%;
+  top: 0;
+}
+header .header_area {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  padding: 10px;
+}
+header .header_area div a {
+  font-size: 2rem;
+  color: #333;
+  text-align: left;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+}
+header .header_area div span {
+  font-size: 1.6rem;
+}
+
+#g-nav.panelactive {
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+/*丸の拡大*/
+.circle-bg {
+  position: fixed;
+  z-index: 20;
+  /*丸の形*/
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(51, 51, 51, 0.6);
+  /*丸のスタート位置と形状*/
+  transform: scale(0);
+  /*scaleをはじめは0に*/
+  top: -50px;
+  left: calc(50% - 50px);
+  /*50%から円の半径を引いた値*/
+  transition: all 0.6s;
+  /*0.6秒かけてアニメーション*/
+}
+
+.circle-bg.circleactive {
+  transform: scale(50);
+  /*クラスが付与されたらscaleを拡大*/
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav-list {
+  display: none;
+  /*はじめは表示なし*/
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+#g-nav-list ul li a .ja {
+  font-size: 1rem;
+  margin-left: 20px;
+  position: relative;
+  display: block;
+  margin-top: 4px;
+}
+#g-nav-list ul li a .ja::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -17px;
+  width: 10px;
+  height: 1px;
+  background-color: #FFF;
+  transform: translateY(-50%);
+}
+
+#g-nav.panelactive #g-nav-list {
+  display: block;
+  /*クラスが付与されたら出現*/
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  opacity: 0;
+  /*はじめは透過0*/
+  /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*背景が出現後にナビゲーションを表示*/
+#g-nav.panelactive ul {
+  opacity: 1;
+  padding: 0;
+}
+
+/* 背景が出現後にナビゲーション li を表示※レイアウトによって調整してください。不必要なら削除*/
+#g-nav.panelactive ul li {
+  animation-name: gnaviAnime;
+  animation-duration: 1s;
+  animation-delay: 0.2s;
+  /*0.2 秒遅らせて出現*/
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes gnaviAnime {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*リストのレイアウト設定*/
+#g-nav li {
+  text-align: center;
+  font-family: Garamond, "メイリオ", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gpthic", sans-serif;
+  list-style: none;
+  font-size: 4rem;
+  line-height: 2.2rem;
+  border-bottom: 1px solid #fff;
+}
+
+#g-nav li a {
+  color: #FFF;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  margin: 20px auto 10px;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1 {
+  position: fixed;
+  z-index: 9999;
+  /*ボタンを最前面に*/
+  top: 0px;
+  right: 10px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+/*×に変化*/
+.openbtn1 span {
+  display: inline-block;
+  transition: all 0.4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #fff;
+  background-color: #333;
+  width: 45%;
+}
+
+.openbtn1 span:nth-of-type(1) {
+  top: 15px;
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top: 23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top: 31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+footer {
+  background-color: #333;
+  background-color: #f7f7f7;
+  padding: 80px 0 0 0;
+}
+footer ul {
+  padding: 0;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+footer ul li {
+  position: relative;
+  list-style: none;
+  color: #fff;
+  color: #333;
+  font-size: 1.4rem;
+  text-align: left;
+  margin: 0 auto;
+  padding: 10px;
+  border-bottom: 1px solid #ededed;
+}
+footer ul li::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%) rotate(45deg);
+  border-top: 1px solid #333;
+  border-right: 1px solid #333;
+}
+footer ul li a {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+}
+footer ul li a:link, footer ul li a:visited, footer ul li a:hover, footer ul li a:active {
+  color: #333;
+}
+footer ul li a .ja {
+  font-size: 1rem;
+  margin-left: 20px;
+  position: relative;
+}
+footer ul li a .ja::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 6px;
+  height: 1px;
+  background-color: #333;
+  transform: translateY(-50%);
+}
+footer ul li a .ja::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  width: 6px;
+  height: 1px;
+  background-color: #333;
+  transform: translateY(-50%);
+}
+footer .copy {
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+  margin: 0 auto;
+  background: #333;
+  color: #fff;
+  margin-top: 80px;
+}
+
+.fade_in {
+  transform: translateY(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 1s, opacity 1s, visibility 1s;
+}
+
+.is-fadein {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.scale_up {
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 1s, opacity 1s, visibility 1s;
+}
+
+.is-scale {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+a {
+  color: #006a9e;
+}
+
+.date {
+  color: gray;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+.tag {
+  background: #ededed;
+  font-size: 1.02rem;
+  padding: 4px 8px;
+  border-radius: 10px;
+  color: gray;
+  margin-left: 10px;
+}/*# sourceMappingURL=common.css.map */
