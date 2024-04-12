@@ -99,8 +99,8 @@ $(document).ready(function () {
             $("#valBase_keyWord").text(numKeyWord[result.sumDay.cntSum]);
             // $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]" + result.sumDay.expression);
             $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]");
-            $("#valMajor_2_ans").html(numToCircleNum[result.sumDay.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumDay.cntSum]+"</span>");
-            $("#valMajor_1_ans").html(numToCircleNum[result.sumBirthMonth.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthMonth.cntSum]+"</span>");
+            $("#valMajor_2_ans").html(numToCircleNum[result.sumDay.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumDay.cntSum]+"</span>");
+            $("#valMajor_1_ans").html(numToCircleNum[result.sumBirthMonth.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthMonth.cntSum]+"</span>");
             $("#graphMajorNum_1").text(result.sumBirthMonth.cntSum);
 
             $("#graphMajorNum_2").text(result.sumDay.cntSum); 
@@ -111,7 +111,7 @@ $(document).ready(function () {
 
             // $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
             $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]");
-            $("#valMajor_3_ans").html(numToCircleNum[result.sumBirthYear.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthYear.cntSum]+"</span>");
+            $("#valMajor_3_ans").html(numToCircleNum[result.sumBirthYear.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthYear.cntSum]+"</span>");
             // $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]" + result.sumBirthYear.expression);
             $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]");
             $("#valMain").text(result.sumBirthdate.cntSum);
@@ -143,32 +143,32 @@ $(document).ready(function () {
             $("#graphChallengeAge_4").text((parseInt(calc_age)+18)+"歳");
             // $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange + result.pinacleArr.pnFirst.pnFirstVal.expression);
             $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange);
-            $("#valPinnacle_2_ans").html(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"</span>");
+            $("#valPinnacle_2_ans").html(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"</span>");
             $("#graphPinnacleNum_2").text(result.pinacleArr.pnSecond.pnSecondVal.cntSum);
             // $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange + result.pinacleArr.pnSecond.pnSecondVal.expression);
             $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange);
-            $("#valPinnacle_3_ans").html(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"</span>");
+            $("#valPinnacle_3_ans").html(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"</span>");
             $("#graphPinnacleNum_3").text(result.pinacleArr.pnThird.pnThirdVal.cntSum);
             // $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange + result.pinacleArr.pnThird.pnThirdVal.expression);
             $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange);
-            $("#valPinnacle_4_ans").html(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"</span>");
+            $("#valPinnacle_4_ans").html(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"</span>");
             $("#graphPinnacleNum_4").text(result.pinacleArr.pnFourth.pnFourthVal.cntSum);
             // $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
             $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange);
 
-            $("#valChallenge_1_ans").html(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFirst.chFirstVal.cntSum]+"</span>");
+            $("#valChallenge_1_ans").html(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFirst.chFirstVal.cntSum]+"</span>");
             $("#graphChallengeNum_1").text(result.challengeArr.chFirst.chFirstVal.cntSum);
             // $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
             $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange);
-            $("#valChallenge_2_ans").html(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chSecond.chSecondVal.cntSum]+"</span>");
+            $("#valChallenge_2_ans").html(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chSecond.chSecondVal.cntSum]+"</span>");
             $("#graphChallengeNum_2").text(result.challengeArr.chSecond.chSecondVal.cntSum);
             // $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange + result.challengeArr.chSecond.chSecondVal.expression);
             $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange);
-            $("#valChallenge_3_ans").html(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chThird.chThirdVal.cntSum]+"</span>");
+            $("#valChallenge_3_ans").html(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chThird.chThirdVal.cntSum]+"</span>");
             $("#graphChallengeNum_3").text(result.challengeArr.chThird.chThirdVal.cntSum);
             // $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange + result.challengeArr.chThird.chThirdVal.expression);
             $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange);
-            $("#valChallenge_4_ans").html(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFourth.chFourthVal.cntSum]+"</span>");
+            $("#valChallenge_4_ans").html(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum]+"<span class='res-contents br-sp ' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFourth.chFourthVal.cntSum]+"</span>");
             $("#graphChallengeNum_4").text(result.challengeArr.chFourth.chFourthVal.cntSum);
             // $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange + result.challengeArr.chFourth.chFourthVal.expression);
             $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange);

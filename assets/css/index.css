@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap");
 .br-sp {
-  display: block;
+  display: block !important;
 }
 @media screen and (min-width: 768px) {
   .br-sp {
@@ -317,6 +317,12 @@ body {
   position: relative;
   top: 8px;
 }
+@media screen and (max-width: 768px) {
+  .res-birthdate-wrap .res-wrap .res-item-inner-wrap .ans,
+  .res-name-wrap .res-wrap .res-item-inner-wrap .ans {
+    line-height: 1;
+  }
+}
 .res-birthdate-wrap .res-wrap .res-ttl,
 .res-name-wrap .res-wrap .res-ttl {
   font-size: 2rem;
@@ -340,6 +346,12 @@ body {
 .res-name-wrap .res-wrap .res-contents.w100 {
   width: 100%;
 }
+@media screen and (max-width: 768px) {
+  .res-birthdate-wrap .res-wrap .res-contents,
+  .res-name-wrap .res-wrap .res-contents {
+    margin-top: 0;
+  }
+}
 .res-birthdate-wrap .res-wrap .res-contents div,
 .res-name-wrap .res-wrap .res-contents div {
   font-size: 2rem;
@@ -350,6 +362,12 @@ body {
 .res-name-wrap .res-wrap .res-contents div.fw-normal {
   font-weight: 500;
   font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .res-birthdate-wrap .res-wrap .res-contents div.fw-normal,
+  .res-name-wrap .res-wrap .res-contents div.fw-normal {
+    line-height: 1;
+  }
 }
 .res-birthdate-wrap .res-wrap .res-contents .icon-wrap,
 .res-name-wrap .res-wrap .res-contents .icon-wrap {
