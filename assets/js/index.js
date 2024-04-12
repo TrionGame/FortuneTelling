@@ -112,7 +112,6 @@ $(document).ready(function () {
             // $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
             $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]");
             $("#valMajor_3_ans").html(numToCircleNum[result.sumBirthYear.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthYear.cntSum]+"</span>");
-            console.log("test");
             // $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]" + result.sumBirthYear.expression);
             $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]");
             $("#valMain").text(result.sumBirthdate.cntSum);
