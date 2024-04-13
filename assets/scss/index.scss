@@ -21,7 +21,7 @@ $text-size-large: 3.0rem;
 .br-sp {
     display: block !important;
 
-    @include mediaPC() {
+    @include mediaPC() { 
         display: none;
     }
 }
