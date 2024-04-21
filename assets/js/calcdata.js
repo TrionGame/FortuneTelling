@@ -435,7 +435,7 @@ function calculateDigits(birthdate) {
         graphAgeData:valuesTable_2,
     }
 }
-
+ 
 //Name⇒数値化
 function convertStringToNumberWithConditions(inputString, birthdate) {
     let cntString = inputString.length;
