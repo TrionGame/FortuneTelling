@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @charset "UTF-8";
 @import './_variables';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap');
@@ -558,6 +559,8 @@ body {
     width: 100%;
     height: auto;
 =======
+=======
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
 @charset "UTF-8";
 @import './_variables';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Playfair+Display:wght@600&display=swap');
@@ -579,9 +582,15 @@ $text-size-large: 3.0rem;
 }
 
 .br-sp {
+<<<<<<< HEAD
     display: block;
 
     @include mediaPC() {
+=======
+    display: block !important;
+
+    @include mediaPC() { 
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
         display: none;
     }
 }
@@ -919,7 +928,13 @@ body {
                 font-weight: 600;
                 position: relative;
                 top: 8px;
+<<<<<<< HEAD
 
+=======
+                @include mediaSP(){
+                    line-height: 1;
+                }
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
             }
         }
 
@@ -953,6 +968,13 @@ body {
                 width: 100%;
             }
 
+<<<<<<< HEAD
+=======
+            @include mediaSP(){
+                margin-top: 0;
+            }
+
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
             div {
                 font-size: 2rem;
                 line-height: 1.8;
@@ -962,6 +984,13 @@ body {
                     font-weight: 500;
                     // font-size: 1.6rem;
                     font-size: $text-size-medium;
+<<<<<<< HEAD
+=======
+
+                    @include mediaSP(){
+                        line-height: 1;
+                    }
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
                 }
             }
 
@@ -1116,5 +1145,8 @@ body {
 .popup-image {
     width: 100%;
     height: auto;
+<<<<<<< HEAD
 >>>>>>> 34d9a9136288c701776dd7a5d90dc22215a108a9
+=======
+>>>>>>> 0a53d1bee1aa42b573e933d27ce6bb98ee2ef9a7
 }

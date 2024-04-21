@@ -26,7 +26,7 @@ $(document).ready(function () {
         }
 
         let name = $("[name='name']").val().replace(/\s/g, '');
-        if (name == "") {
+        if (name == "") { 
             errMsg.push("名前を入力してください。");
         } else if (!/^[a-zA-Z]+$/.test(name)) {
             errMsg.push("名前は英字のみ入力可能です。");
