@@ -83,7 +83,7 @@ function calcEachNum(num) {
         if (isDoublesInArray(birth_month, doublesTargetArray)) {
             cntSum += parseInt(birth_month);
             expression += "+" + birth_month;
-            console.log("4keta1");
+            // console.log("4keta1");
         } else {
             for (var i = 0; i < birth_month.length; i++) {
                 cntSum += parseInt(birth_month[i]);
@@ -98,7 +98,7 @@ function calcEachNum(num) {
         if (isDoublesInArray(birth_day, doublesTargetArray)) {
             cntSum += parseInt(birth_day);
             expression += "+" + birth_day;
-            console.log("4keta2");
+            // console.log("4keta2");
         } else {
             for (var i = 0; i < birth_day.length; i++) {
                 cntSum += parseInt(birth_day[i]);
@@ -201,6 +201,8 @@ function calcEachNum(num) {
     }
 }
 function calcEachNum2(num) {
+    // console.log("ぞろ目排除");
+    // console.log(num);
     let cntSum = 0;
     let expression = "";
     for (var i = 0; i < num.length; i++) {
@@ -217,28 +219,31 @@ function calcEachNum2(num) {
     //ぞろ目チェック
     let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
-    if (!isDoublesInArray(cntSum, doublesTargetArray)) {
+    //テスト：ぞろ目排除
+    // if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
             var tempCntSum = 0;
             cntsumStr = cntSum.toString();
             for (var i = 0; i < cntsumStr.length; i++) {
                 tempCntSum += parseInt(cntsumStr[i]);
-                if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
-                    break;
-                }
+                // if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+                //     break;
+                // }
             }
-            if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+            // if (isDoublesInArray(tempCntSum, doublesTargetArray)) {
+            //     cntSum = tempCntSum;
+            //     break;
+            // } else {
+            //     cntSum = tempCntSum;
+            // }
                 cntSum = tempCntSum;
-                break;
-            } else {
-                cntSum = tempCntSum;
-            }
         }
-    }
+    // }
     // let expressionStr = "(" + expression + ")->" + cntsumStr + "->" + cntSum;
     let expressionStr = num + "->" + cntsumStr + "->" + cntSum;
     return {
         cntSum: cntSum,
+        // cntSum: cntsumStr,
         expression: expressionStr,
     }
 }
@@ -258,6 +263,9 @@ function calculateDigits(birthdate) {
     let sumDay = calcEachNum(day);
 
     let sumBdate = calcEachNum(b_date);
+    let sumBdate2 = calcEachNum2(b_date);// テスト　修正
+    console.log("修正：日付");
+    console.log(sumBdate2);
 
 
     //イヤーナンバー
@@ -310,18 +318,25 @@ function calculateDigits(birthdate) {
     var rangeFirstVal = valuesTable[sumBirthdate.cntSum][0];
     var rangeSecondVal = valuesTable[sumBirthdate.cntSum][1];
     var rangeThirdVal = valuesTable[sumBirthdate.cntSum][2];
-    let sumBirthMonth = calcEachNum(birth_month);
-    let sumBirthYear = calcEachNum(birth_year);
+    // let sumBirthMonth = calcEachNum(birth_month);//元
+    // let sumBirthYear = calcEachNum(birth_year);//元
+    let sumBirthMonth = calcEachNum2(birth_month);//ぞろ目排除
+    // let sumBirthDay;//ぞろ目排除
+    let sumBirthDay = calcEachNum2(day);//ぞろ目排除
+    let sumBirthYear = calcEachNum2(birth_year);//ぞろ目排除
     sumBirthMonth["rangeFirstVal"] = rangeFirstVal;
     sumDay["rangeSecondVal"] = rangeSecondVal;
     sumBirthYear["rangeThirdVal"] = rangeThirdVal;
 
 
     //▼ピナクルナンバー:登り山
-    // let birth_year = birthdate.substr(0, 4);//生まれ年
-    // let birth_month = birthdate.substr(4, 2);//生まれ月
-    // let day = birthdate.substr(6, 2);//生まれ日
-    //ファースト(生まれ月＋日)[年齢=36-メイン数]
+    /*
+    birth_year = birthdate.substr(0, 4);//生まれ年
+    birth_month = birthdate.substr(4, 2);//生まれ月
+    day = birthdate.substr(6, 2);//生まれ日
+    19900313
+    ファースト(生まれ月＋日)[年齢=36-メイン数]
+    */
     let firstAge = 36 - parseInt(sumBirthdate.cntSum);
     let sumMonthDay = parseInt(birth_month) + parseInt(day);
     let pnFirstVal = calcEachNum2(sumMonthDay.toString());
@@ -349,7 +364,7 @@ function calculateDigits(birthdate) {
     // let pnFourthRange = "[" + fromFourthAge + "歳~](" + parseInt(birth_month) + "+" + parseInt(birth_year) + ")->";
     let pnFourthRange = "[" + fromFourthAge + "歳~]";
     let pnFourthVal = parseInt(birth_month) + parseInt(birth_year);
-    pnFourthVal = calcEachNum2(pnFourthVal.toString());
+    pnFourthVal = calcEachNum2(pnFourthVal.toString());//20000913= 2000+09 = 2009 = 11 = 2
     let pinacleArr = [];
     // 各要素をオブジェクトとして初期化
     pinacleArr["pnFirst"] = {};
@@ -357,13 +372,13 @@ function calculateDigits(birthdate) {
     pinacleArr["pnThird"] = {};
     pinacleArr["pnFourth"] = {};
     pinacleArr["pnFirst"]["pnFirstRange"] = pnFirstRange;
-    pinacleArr["pnFirst"]["pnFirstVal"] = pnFirstVal;
+    pinacleArr["pnFirst"]["pnFirstVal"] = pnFirstVal; //テスト：ぞろ目排除
     pinacleArr["pnSecond"]["pnSecondRange"] = pnSecondRange;
-    pinacleArr["pnSecond"]["pnSecondVal"] = sumYearDay;
+    pinacleArr["pnSecond"]["pnSecondVal"] = sumYearDay;//テスト：ぞろ目排除
     pinacleArr["pnThird"]["pnThirdRange"] = pnThirdRange;
-    pinacleArr["pnThird"]["pnThirdVal"] = pnThirdVal;
+    pinacleArr["pnThird"]["pnThirdVal"] = pnThirdVal;//テスト：ぞろ目排除
     pinacleArr["pnFourth"]["pnFourthRange"] = pnFourthRange;
-    pinacleArr["pnFourth"]["pnFourthVal"] = pnFourthVal;
+    pinacleArr["pnFourth"]["pnFourthVal"] = pnFourthVal;//テスト：ぞろ目排除
 
     //チャレンジナンバー：助け杖
     //ファースト(生まれ日-月)[年齢=36-メイン数]
@@ -412,6 +427,8 @@ function calculateDigits(birthdate) {
         sumBirthdate: sumBirthdate,
         sumDay: sumDay,
         sumBdate: sumBdate,
+        sumBdate2:sumBdate2, //テスト　追加
+        sumBirthDay:sumBirthDay, //テスト　追加
         yearSum: yearSum,
         pinacleArr: pinacleArr,
         challengeArr: challengeArr,
