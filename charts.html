@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -94,4 +95,102 @@
 </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js グラフ</title>
+    <!-- Chart.jsを読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- グラフを描画するCanvas要素 -->
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+    // グラフのデータ（例として適当なデータを使用）
+    var data = {
+        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+        datasets: [
+            {
+                label: '基準値',
+                data: [3, 4, 2, 5, 1, 3, 2, 4, 1],
+                backgroundColor: 'lightgrey',
+                borderColor: 'transparent', // 基準値のバーに境界線を設定
+                borderWidth: 2 // 境界線の太さ
+            },
+            {
+                label: 'データセット',
+                data: [1, 2, 3, 4, 5, 6, 3, 2, 1],
+                backgroundColor: 'blue',
+                borderColor: 'blue', // データのバーに境界線を設定
+                borderWidth: 1 // 境界線の太さ
+            }
+        ]
+    };
+
+    // グラフを描画するCanvas要素を取得
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    // 各ラベルごとの基準値
+    var thresholds = {
+        "1": 3,
+        "2": 4,
+        "3": 2,
+        "4": 5,
+        "5": 1,
+        "6": 3,
+        "7": 2,
+        "8": 4,
+        "9": 1
+    };
+
+    // グラフのオプション
+    var options = {
+        scales: {
+            x: {
+                type: 'linear', // 横軸の種類
+                position: 'bottom', // 横軸の位置
+                title: {
+                    display: true,
+                    text: '横軸'
+                },
+                ticks: {
+                    stepSize: 1, // 刻み幅
+                    min: 1, // 最小値
+                    max: 9 // 最大値
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: '縦軸'
+                },
+                ticks: {
+                    stepSize: 1, // 刻み幅
+                    min: 1, // 最小値
+                    max: 6 // 最大値
+                }
+            }
+        }
+    };
+
+    // グラフを作成
+    var myChart = new Chart(ctx, {
+        type: 'bar', // バーグラフを使用
+        data: data,
+        options: options
+    });
+
+    // ラベルごとの基準値を取得する関数
+    function getThreshold(label) {
+        return thresholds[label] || 0;
+    }
+</script>
+
+</body>
+>>>>>>> 34d9a9136288c701776dd7a5d90dc22215a108a9
 </html>
