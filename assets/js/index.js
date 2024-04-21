@@ -94,7 +94,7 @@ $(document).ready(function () {
             //▲
             $("#inputedBirthdate").text(birthdate);
             var result = calculateDigits(birthdate);
-            console.log(result);  
+            console.log(result);   
             $("#valBase").text(result.sumDay.cntSum);
             $("#valBase_shiki").text(result.sumDay.expression);
             $("#valBase_keyWord").text(numKeyWord[result.sumDay.cntSum]);
