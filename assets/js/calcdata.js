@@ -7,7 +7,7 @@ let inputValue = "32";
 let res = isDoublesInArray(inputValue, doublesTargetArray);
 
 //▼入力値カウント(1+2+3+4...)
-function calcEachNum(num) {
+function calcEachNum(num) { 
     let cntSum = 0;
     let expression = "";
     // let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];

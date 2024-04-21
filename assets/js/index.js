@@ -132,7 +132,7 @@ $(document).ready(function () {
             //修正後
             console.log("INDEX");
             // console.log(result.sumBdate2.cntSum);
-            console.log(result.sumBdate.cntSum);
+            console.log(result.sumBdate.cntSum); 
             $("#valPinnacle_1_ans").html(numToCircleNum[result.sumBdate2.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBdate.cntSum]+"</span>");
             $("#graphPinnacleNum_1").text(result.sumBdate.cntSum);
             //テスト　修正
