@@ -421,7 +421,7 @@ function calculateDigits(birthdate) {
     challengeArr["chFourth"]["chFourthRange"] = chFourthRange;
 
     //返り値
-    return {
+    return { 
         sumBirthYear: sumBirthYear,
         sumBirthMonth: sumBirthMonth,
         sumBirthdate: sumBirthdate,
