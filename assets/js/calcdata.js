@@ -1,16 +1,20 @@
-//▼ぞろ目チェック
+/*
+*▼ぞろ目チェック
+*@string inputValue 確認する文字列
+*@array doublesTargetArray 対象のデータ配列
+*@return boolean
+*/
 let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
 function isDoublesInArray(inputValue, doublesTargetArray) {
     return $.inArray(parseInt(inputValue), doublesTargetArray) !== -1;
 }
-let inputValue = "32";
-let res = isDoublesInArray(inputValue, doublesTargetArray);
 
-//▼入力値カウント(1+2+3+4...)
+/*
+*▼入力値カウント(1+2+3+4...) 各数字を一つずつカウントしていく
+*/
 function calcEachNum(num) { 
     let cntSum = 0;
     let expression = "";
-    // let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let doublesTargetArray = [11, 22, 33];
 
     //引数が８桁(生年月日の場合)
@@ -58,10 +62,6 @@ function calcEachNum(num) {
             }
         }
         let cntSumString = cntSum.toLocaleString();
-        // cntSum = 0;
-        // for (var i = 0; i < cntSumString.length; i++) {
-        //     cntSum += parseInt(cntSumString[i]);
-        // }
 
         cntSum = 0;
         if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
@@ -83,7 +83,6 @@ function calcEachNum(num) {
         if (isDoublesInArray(birth_month, doublesTargetArray)) {
             cntSum += parseInt(birth_month);
             expression += "+" + birth_month;
-            // console.log("4keta1");
         } else {
             for (var i = 0; i < birth_month.length; i++) {
                 cntSum += parseInt(birth_month[i]);
@@ -98,7 +97,6 @@ function calcEachNum(num) {
         if (isDoublesInArray(birth_day, doublesTargetArray)) {
             cntSum += parseInt(birth_day);
             expression += "+" + birth_day;
-            // console.log("4keta2");
         } else {
             for (var i = 0; i < birth_day.length; i++) {
                 cntSum += parseInt(birth_day[i]);
@@ -110,7 +108,6 @@ function calcEachNum(num) {
             }
         }
         let cntSumString = cntSum.toLocaleString();
-        // console.log(cntSumString);
         cntSum = 0;
         if (!isDoublesInArray(cntSumString, doublesTargetArray)) {
             for (var i = 0; i < cntSumString.length; i++) {
@@ -149,7 +146,6 @@ function calcEachNum(num) {
         }
     }
     else {
-        // console.log("name=>Num");
         for (var i = 0; i < num.length; i++) {
             cntSum += parseInt(num[i]);
             if (num[i] == 0) {
@@ -201,8 +197,6 @@ function calcEachNum(num) {
     }
 }
 function calcEachNum2(num) {
-    // console.log("ぞろ目排除");
-    // console.log(num);
     let cntSum = 0;
     let expression = "";
     for (var i = 0; i < num.length; i++) {
@@ -219,7 +213,6 @@ function calcEachNum2(num) {
     //ぞろ目チェック
     let doublesTargetArray = [11, 22, 33, 44, 55, 66, 77, 88, 99];
     let cntsumStr = cntSum;
-    //テスト：ぞろ目排除
     // if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
             var tempCntSum = 0;
@@ -248,8 +241,6 @@ function calcEachNum2(num) {
     }
 }
 
-
-
 // 生年月日から算出(ベース/メイン/チャレンジ/イヤーナンバー)
 function calculateDigits(birthdate) {
     // 月と日を取得
@@ -264,10 +255,6 @@ function calculateDigits(birthdate) {
 
     let sumBdate = calcEachNum(b_date);
     let sumBdate2 = calcEachNum2(b_date);// テスト　修正
-    console.log("修正：日付");
-    console.log(sumBdate2);
-
-
     //イヤーナンバー
     let yearSum = 0;
     var currentYear = new Date().getFullYear();
@@ -300,6 +287,9 @@ function calculateDigits(birthdate) {
         22: ["0~32歳", "33~59歳", "60歳~"],
         33: ["0~30歳", "31~57歳", "58歳~"],
     };
+    /*
+    *年齢表示　棒グラフ用
+    */
     let valuesTable_2 = {
         1: ["26", "27", "53", "54"],
         2: ["25", "26", "52", "53"],
@@ -337,7 +327,23 @@ function calculateDigits(birthdate) {
     19900313
     ファースト(生まれ月＋日)[年齢=36-メイン数]
     */
-    let firstAge = 36 - parseInt(sumBirthdate.cntSum);
+    let change_num_for_calc_age = parseInt(sumBirthdate.cntSum);
+    if (change_num_for_calc_age === 11) {
+        change_num_for_calc_age = 2;
+        console.log("11のため、2に変換します。");
+    } else if (change_num_for_calc_age === 22) {
+        change_num_for_calc_age = 4;
+        console.log("22のため、4に変換します。");
+    } else if (change_num_for_calc_age === 33) {
+        change_num_for_calc_age = 6;
+        console.log("33のため、6に変換します。");
+    }else{
+        change_num_for_calc_age;
+        console.log(change_num_for_calc_age + "で計算を始。");
+    }
+
+    // let firstAge = 36 - parseInt(sumBirthdate.cntSum);
+    let firstAge = 36 - change_num_for_calc_age;
     let sumMonthDay = parseInt(birth_month) + parseInt(day);
     let pnFirstVal = calcEachNum2(sumMonthDay.toString());
     // var pnFirstRange = "36-" + parseInt(sumBirthdate.cntSum) + "=" + firstAge + "[0歳~" + firstAge + "歳](" + parseInt(birth_month) + "+" + parseInt(day) + ")->";

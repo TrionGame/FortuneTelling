@@ -1,12 +1,8 @@
 $(document).ready(function () {
-
-    // 表を開くトリガーがクリックされたとき
     $('.popup-trigger').click(function () {
         // ポップアップを表示
         $('#popupOverlay').fadeIn();
     });
-
-    // 背景をタップしたとき
     $('#popupOverlay').click(function (event) {
         // クリックされた要素がポップアップ自体でない場合、ポップアップを非表示
         if (event.target.id === 'popupOverlay') {
@@ -26,7 +22,7 @@ $(document).ready(function () {
         }
 
         let name = $("[name='name']").val().replace(/\s/g, '');
-        if (name == "") { 
+        if (name == "") {
             errMsg.push("名前を入力してください。");
         } else if (!/^[a-zA-Z]+$/.test(name)) {
             errMsg.push("名前は英字のみ入力可能です。");
@@ -42,6 +38,9 @@ $(document).ready(function () {
                 $("#errorMessages").append("<p>" + errMsg[i] + "</p>");
             }
         } else {
+            /*
+            *ベース,メイン,チャレンジ,道,到達,ハート,ペルソナ,ウィーク,欠落,
+            */
             const numKeyWord = {
                 0: '',
                 1: '自信、積極的',
@@ -74,47 +73,61 @@ $(document).ready(function () {
             };
 
             /*
-            *Add YearNumber
+            *イヤーナンバー
             */
-           //▼
-           const YearNumMsg = {
-            1:"スタートの年、新たな目標を立てる、積極的な行動、ゆっくり進める",
-            2:"選択の年、現実的な選択、今後３年間影響、他人に相談すると良い",
-            3:"楽しむ年、弾けて味わう、楽観的に、素直に",
-            4:"安定の年、土台作り、現状維持、学歴、資格、自制、忍耐",
-            5:"飛躍の年、更に飛躍、拡大、不安定、旅行、海外へ行く、冒険、変化、情報収集",
-            6:"家族の年、育てる、育む、愛でる、愛する、奉仕、家族のこと",
-            7:"内省の年、見つめる、見極める、深める、休息、プライベートを充実",
-            8:"達成の年、到達、花が咲いた、マックス、幸運、強気な行動、派手、本質を見る年",
-            9:"終りの年、お片付け、整理、次への準備、断捨離、大人しく過ごす",
-            11:"魂の選択の年、魂からの揺さぶり、深い選択、人生にとってとても大事な年、宇宙の声を聞く",
-            22:"激震の年、激震の中形作る、極端、突然の大恋愛、この年の努力が大事",
-            33:"地割れ、大激震、宇宙が思う"
-           }
+            //▼
+            const YearNumMsg = {
+                1: "スタートの年、新たな目標を立てる、積極的な行動、ゆっくり進める",
+                2: "選択の年、現実的な選択、今後３年間影響、他人に相談すると良い",
+                3: "楽しむ年、弾けて味わう、楽観的に、素直に",
+                4: "安定の年、土台作り、現状維持、学歴、資格、自制、忍耐",
+                5: "飛躍の年、更に飛躍、拡大、不安定、旅行、海外へ行く、冒険、変化、情報収集",
+                6: "家族の年、育てる、育む、愛でる、愛する、奉仕、家族のこと",
+                7: "内省の年、見つめる、見極める、深める、休息、プライベートを充実",
+                8: "達成の年、到達、花が咲いた、マックス、幸運、強気な行動、派手、本質を見る年",
+                9: "終りの年、お片付け、整理、次への準備、断捨離、大人しく過ごす",
+                11: "魂の選択の年、魂からの揺さぶり、深い選択、人生にとってとても大事な年、宇宙の声を聞く",
+                22: "激震の年、激震の中形作る、極端、突然の大恋愛、この年の努力が大事",
+                33: "地割れ、大激震、宇宙が思う"
+            }
             //▲
             $("#inputedBirthdate").text(birthdate);
             var result = calculateDigits(birthdate);
-            console.log(result);   
             $("#valBase").text(result.sumDay.cntSum);
             $("#valBase_shiki").text(result.sumDay.expression);
             $("#valBase_keyWord").text(numKeyWord[result.sumDay.cntSum]);
             // $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]" + result.sumDay.expression);
             $("#valMajor_2_shiki").text("[" + result.sumDay.rangeSecondVal + "]");
             // $("#valMajor_2_ans").html(numToCircleNum[result.sumDay.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumDay.cntSum]+"</span>");
-            $("#valMajor_2_ans").html(numToCircleNum[result.sumBirthDay.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumDay.cntSum]+"</span>");
-            $("#valMajor_1_ans").html(numToCircleNum[result.sumBirthMonth.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthMonth.cntSum]+"</span>");
+            $("#valMajor_2_ans").html(numToCircleNum[result.sumBirthDay.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.sumDay.cntSum] + "</span>");
+            $("#valMajor_1_ans").html(numToCircleNum[result.sumBirthMonth.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.sumBirthMonth.cntSum] + "</span>");
             $("#graphMajorNum_1").text(result.sumBirthMonth.cntSum);
 
             // $("#graphMajorNum_2").text(result.sumDay.cntSum); 
-            $("#graphMajorNum_2").text(result.sumBirthDay.cntSum); 
+            $("#graphMajorNum_2").text(result.sumBirthDay.cntSum);
             $("#graphMajorNum_3").text(result.sumBirthYear.cntSum);//元
-            let calc_age = 36 - parseInt(result.sumBirthdate.cntSum);
-            $("#graphMajorAge_2").text(result.graphAgeData[result.sumBirthdate.cntSum][0]+"歳");
-            $("#graphMajorAge_3").text(result.graphAgeData[result.sumBirthdate.cntSum][2]+"歳");
+            // let calc_age = 36 - parseInt(result.sumBirthdate.cntSum);//元0425
+            /*
+            *メイン数がぞろ目の場合、変換する。11->2,22->4,33->6
+            */
+            let change_num_for_calc_age = parseInt(result.sumBirthdate.cntSum);
+            if (change_num_for_calc_age === 11) {
+                change_num_for_calc_age = 2;
+            } else if (change_num_for_calc_age === 22) {
+                change_num_for_calc_age = 4;
+            } else if (change_num_for_calc_age === 33) {
+                change_num_for_calc_age = 6;
+            }else{
+                change_num_for_calc_age;
+                console.log(change_num_for_calc_age + "で計算を始。");
+            }
+            let calc_age = 36 - change_num_for_calc_age;//テスト0425　
+            $("#graphMajorAge_2").text(result.graphAgeData[result.sumBirthdate.cntSum][0] + "歳");
+            $("#graphMajorAge_3").text(result.graphAgeData[result.sumBirthdate.cntSum][2] + "歳");
 
             // $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]" + result.sumBirthMonth.expression);
             $("#valMajor_1_shiki").text("[" + result.sumBirthMonth.rangeFirstVal + "]");
-            $("#valMajor_3_ans").html(numToCircleNum[result.sumBirthYear.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBirthYear.cntSum]+"</span>");//元
+            $("#valMajor_3_ans").html(numToCircleNum[result.sumBirthYear.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.sumBirthYear.cntSum] + "</span>");//元
             // $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]" + result.sumBirthYear.expression);
             $("#valMajor_3_shiki").text("[" + result.sumBirthYear.rangeThirdVal + "]");
             $("#valMain").text(result.sumBirthdate.cntSum);
@@ -130,54 +143,51 @@ $(document).ready(function () {
             //元
             // $("#valPinnacle_1_ans").html(numToCircleNum[result.sumBdate.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBdate.cntSum]+"</span>");
             //修正後
-            console.log("INDEX");
-            // console.log(result.sumBdate2.cntSum);
-            console.log(result.sumBdate.cntSum); 
-            $("#valPinnacle_1_ans").html(numToCircleNum[result.sumBdate2.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.sumBdate.cntSum]+"</span>");
+            $("#valPinnacle_1_ans").html(numToCircleNum[result.sumBdate2.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.sumBdate.cntSum] + "</span>");
             $("#graphPinnacleNum_1").text(result.sumBdate.cntSum);
             //テスト　修正
             $("#graphPinnacleNum_1").text(result.sumBdate2.cntSum);
 
             // $("#graphPinnacleAge_2").text(parseInt(result.graphAgeData[result.sumDay.cntSum][1])+"歳");
-            $("#graphPinnacleAge_2").text(calc_age+"歳");
+            $("#graphPinnacleAge_2").text(calc_age + "歳");
             // $("#graphPinnacleAge_3").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+9)+"歳");
-            $("#graphPinnacleAge_3").text((parseInt(calc_age)+9)+"歳");
+            $("#graphPinnacleAge_3").text((parseInt(calc_age) + 9) + "歳");
             // $("#graphPinnacleAge_4").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+18)+"歳");
-            $("#graphPinnacleAge_4").text((parseInt(calc_age)+18)+"歳");
+            $("#graphPinnacleAge_4").text((parseInt(calc_age) + 18) + "歳");
             // $("#graphChallengeAge_2").text(parseInt(result.graphAgeData[result.sumDay.cntSum][1])+"歳");
-            $("#graphChallengeAge_2").text(parseInt(calc_age)+"歳");
+            $("#graphChallengeAge_2").text(parseInt(calc_age) + "歳");
             // $("#graphChallengeAge_3").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+9)+"歳");
-            $("#graphChallengeAge_3").text((parseInt(calc_age)+9)+"歳");
+            $("#graphChallengeAge_3").text((parseInt(calc_age) + 9) + "歳");
             // $("#graphChallengeAge_4").text((parseInt(result.graphAgeData[result.sumDay.cntSum][1])+18)+"歳");
-            $("#graphChallengeAge_4").text((parseInt(calc_age)+18)+"歳");
+            $("#graphChallengeAge_4").text((parseInt(calc_age) + 18) + "歳");
             // $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange + result.pinacleArr.pnFirst.pnFirstVal.expression);
             $("#valPinnacle_1_shiki").text(result.pinacleArr.pnFirst.pnFirstRange);
-            $("#valPinnacle_2_ans").html(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnSecond.pnSecondVal.cntSum]+"</span>");
+            $("#valPinnacle_2_ans").html(numToCircleNum[result.pinacleArr.pnSecond.pnSecondVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.pinacleArr.pnSecond.pnSecondVal.cntSum] + "</span>");
             $("#graphPinnacleNum_2").text(result.pinacleArr.pnSecond.pnSecondVal.cntSum);
             // $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange + result.pinacleArr.pnSecond.pnSecondVal.expression);
             $("#valPinnacle_2_shiki").text(result.pinacleArr.pnSecond.pnSecondRange);
-            $("#valPinnacle_3_ans").html(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnThird.pnThirdVal.cntSum]+"</span>");
+            $("#valPinnacle_3_ans").html(numToCircleNum[result.pinacleArr.pnThird.pnThirdVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.pinacleArr.pnThird.pnThirdVal.cntSum] + "</span>");
             $("#graphPinnacleNum_3").text(result.pinacleArr.pnThird.pnThirdVal.cntSum);
             // $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange + result.pinacleArr.pnThird.pnThirdVal.expression);
             $("#valPinnacle_3_shiki").text(result.pinacleArr.pnThird.pnThirdRange);
-            $("#valPinnacle_4_ans").html(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.pinacleArr.pnFourth.pnFourthVal.cntSum]+"</span>");
+            $("#valPinnacle_4_ans").html(numToCircleNum[result.pinacleArr.pnFourth.pnFourthVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.pinacleArr.pnFourth.pnFourthVal.cntSum] + "</span>");
             $("#graphPinnacleNum_4").text(result.pinacleArr.pnFourth.pnFourthVal.cntSum);
             // $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange + result.pinacleArr.pnFourth.pnFourthVal.expression);
             $("#valPinnacle_4_shiki").text(result.pinacleArr.pnFourth.pnFourthRange);
 
-            $("#valChallenge_1_ans").html(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFirst.chFirstVal.cntSum]+"</span>");
+            $("#valChallenge_1_ans").html(numToCircleNum[result.challengeArr.chFirst.chFirstVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.challengeArr.chFirst.chFirstVal.cntSum] + "</span>");
             $("#graphChallengeNum_1").text(result.challengeArr.chFirst.chFirstVal.cntSum);
             // $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange + result.challengeArr.chFirst.chFirstVal.expression);
             $("#valChallenge_1_shiki").text(result.challengeArr.chFirst.chFirstRange);
-            $("#valChallenge_2_ans").html(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chSecond.chSecondVal.cntSum]+"</span>");
+            $("#valChallenge_2_ans").html(numToCircleNum[result.challengeArr.chSecond.chSecondVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.challengeArr.chSecond.chSecondVal.cntSum] + "</span>");
             $("#graphChallengeNum_2").text(result.challengeArr.chSecond.chSecondVal.cntSum);
             // $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange + result.challengeArr.chSecond.chSecondVal.expression);
             $("#valChallenge_2_shiki").text(result.challengeArr.chSecond.chSecondRange);
-            $("#valChallenge_3_ans").html(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chThird.chThirdVal.cntSum]+"</span>");
+            $("#valChallenge_3_ans").html(numToCircleNum[result.challengeArr.chThird.chThirdVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.challengeArr.chThird.chThirdVal.cntSum] + "</span>");
             $("#graphChallengeNum_3").text(result.challengeArr.chThird.chThirdVal.cntSum);
             // $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange + result.challengeArr.chThird.chThirdVal.expression);
             $("#valChallenge_3_shiki").text(result.challengeArr.chThird.chThirdRange);
-            $("#valChallenge_4_ans").html(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum]+"<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>"+numKeyWord[result.challengeArr.chFourth.chFourthVal.cntSum]+"</span>");
+            $("#valChallenge_4_ans").html(numToCircleNum[result.challengeArr.chFourth.chFourthVal.cntSum] + "<span class='res-contents' style='font-weight: 500;margin-left: 10px;vertical-align: text-bottom;display: inline-block;'>" + numKeyWord[result.challengeArr.chFourth.chFourthVal.cntSum] + "</span>");
             $("#graphChallengeNum_4").text(result.challengeArr.chFourth.chFourthVal.cntSum);
             // $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange + result.challengeArr.chFourth.chFourthVal.expression);
             $("#valChallenge_4_shiki").text(result.challengeArr.chFourth.chFourthRange);
@@ -208,9 +218,6 @@ $(document).ready(function () {
             $("#valMiss").text("(" + resultName.missingNumbers + ")");
             $("#valCharacter").text("\"" + resultName.valCharacter + "\"");
 
-            //▼　更新日0411
-            // $("#valWeak_keyWord").text(numKeyWord[resultName.sumCntString.cntSum]);
-            //▲
             // カンマ区切りの文字列から数字を抽出する関数
             function extractNumbers(inputString) {
                 return inputString.split(',').map(Number);
@@ -219,7 +226,7 @@ $(document).ready(function () {
             var numbers = extractNumbers(resultName.valCharacter);
             var outputText = "";
             // 各数字に対応する処理を行う
-            numbers.forEach(function (number,index) {
+            numbers.forEach(function (number, index) {
                 outputText += numKeyWord[number];
                 if (index < numbers.length - 1) {
                     outputText += " / ";
@@ -227,7 +234,6 @@ $(document).ready(function () {
             });
             $("#valCharacter_keyWord").text(numKeyWord[resultName.valCharacter]);
             $("#valCharacter_keyWord").text(outputText);
-            // $("#valCharacter").text(resultName.yearSum);
             $("#cntOne").text(resultName.digitCounts[1]);
             $("#cntTwo").text(resultName.digitCounts[2]);
             $("#cntThree").text(resultName.digitCounts[3]);
@@ -259,99 +265,9 @@ $(document).ready(function () {
             $(".form-wrap").css({
                 "display": "none",
             })
-            // //▼グラフのデータ
-            // console.log("実際のデータ");
-            // console.log(resultName.digitCounts);
-            // var data = {
-            //     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
-            //     datasets: [{
-            //         label: '基準値',
-            //         data: [5, 3, 4, 3, 5, 3, 3, 2, 6],
-            //         backgroundColor: 'lightgrey',
-            //         borderWidth: 0
-            //     }, {
-            //         label: 'データセット',
 
-            //         data: Object.values(resultName.digitCounts),
-
-            //         backgroundColor: function (context) {
-            //             var label = context.chart.data.labels[context.dataIndex];
-            //             var threshold = getThreshold(label);
-            //             var dataset = context.chart.data.datasets[context.datasetIndex];
-            //             var data = dataset.data || [];
-
-            //             return data[context.dataIndex] >= threshold ? '#cc5ee7d7' : '#5e83e7d7';
-            //         }
-            //     }]
-            // };
-
-            // var myChart;
-            // var ctx = document.getElementById('myChart').getContext('2d');
-
-            // var thresholds = {
-            //     "1": 5,
-            //     "2": 3,
-            //     "3": 4,
-            //     "4": 3,
-            //     "5": 5,
-            //     "6": 3,
-            //     "7": 3,
-            //     "8": 2,
-            //     "9": 6
-            // };
-
-            // // グラフのオプション
-            // var options = {
-            //     scales: {
-            //         x: {
-            //             type: 'linear', 
-            //             position: 'bottom', 
-            //             title: {
-            //                 display: true,
-            //                 text: '横軸'
-            //             },
-            //             ticks: {
-            //                 stepSize: 1, 
-            //                 min: 1, 
-            //                 max: 9 
-            //             }
-            //         },
-            //         y: {
-            //             title: {
-            //                 display: true,
-            //                 text: '縦軸'
-            //             },
-            //             ticks: {
-            //                 stepSize: 1, 
-            //                 min: 1, 
-            //                 max: 6 
-            //             }
-            //         }
-            //     }
-            // };
-
-            // var myChart = new Chart(ctx, {
-            //     type: 'bar', 
-            //     data: data,
-            //     options: options
-            // });
-            // function getThreshold(label) {
-            //     return typeof thresholds[label] !== 'undefined' ? thresholds[label] : 0;
-            // }
-            // //▲
         }
     });
-
-    // 
-    // $("#backInput").click(function(){
-    //     $(".results-wrap").css({
-    //         "display": "none",
-    //     })
-    //     $(".form-wrap").css({
-    //         "display": "block",
-    //     })
-    // });
-
 });
 
 $(function () {
