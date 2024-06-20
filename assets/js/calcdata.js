@@ -1,3 +1,6 @@
+function log(value){
+    console.log(value);
+}
 /*
 *▼ぞろ目チェック
 *@string inputValue 確認する文字列
@@ -330,16 +333,12 @@ function calculateDigits(birthdate) {
     let change_num_for_calc_age = parseInt(sumBirthdate.cntSum);
     if (change_num_for_calc_age === 11) {
         change_num_for_calc_age = 2;
-        console.log("11のため、2に変換します。");
     } else if (change_num_for_calc_age === 22) {
         change_num_for_calc_age = 4;
-        console.log("22のため、4に変換します。");
     } else if (change_num_for_calc_age === 33) {
         change_num_for_calc_age = 6;
-        console.log("33のため、6に変換します。");
     }else{
         change_num_for_calc_age;
-        console.log(change_num_for_calc_age + "で計算を始。");
     }
 
     // let firstAge = 36 - parseInt(sumBirthdate.cntSum);
@@ -492,9 +491,10 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
         }
     }
     var missingNumbersString = missingNumbers.join(',');
-
+    log(convertedString);
     //道：convertedString
     let sumMichi = calcEachNum(convertedString);
+    log(sumMichi)
 
     //メイン数
     let sumBirthdate = calcEachNum(birthdate);
@@ -584,8 +584,6 @@ function numBody(cnt4, cnt5) {
     }
     //ぞろ目チェック
     let cntsumStr = cntSum;
-    console.log(cntSum);
-    console.log(doublesTargetArray);
     if (!isDoublesInArray(cntSum, doublesTargetArray)) {
         while (cntSum >= 10) {
             var tempCntSum = 0;

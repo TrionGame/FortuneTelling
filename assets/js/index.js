@@ -119,7 +119,6 @@ $(document).ready(function () {
                 change_num_for_calc_age = 6;
             }else{
                 change_num_for_calc_age;
-                console.log(change_num_for_calc_age + "で計算を始。");
             }
             let calc_age = 36 - change_num_for_calc_age;//テスト0425　
             $("#graphMajorAge_2").text(result.graphAgeData[result.sumBirthdate.cntSum][0] + "歳");
