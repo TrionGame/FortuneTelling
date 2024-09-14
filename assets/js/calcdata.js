@@ -49,13 +49,132 @@ function sumDigitsUntilSingle(inputValue) {
     return cntSum;
 }
 
-
+/* 
+ベースメインチャレンジの計算方法のルール
+inputの日がぞろ目の場合は1桁に分解せずそのまま計算する input11日→output 11
+ベース：日
+*/
+function baseNum(day) {
+    // inputの日がぞろ目の場合はそのまま返却
+    if (isDoublesInArray(day, doublesTargetArray)) {
+        let expressionStr = "(" + day + ")" + " -> " + day;
+        log("baseNumの計算結果 " + expressionStr);
+        return {
+            cntSum: day,
+            expression: expressionStr,
+        }
+    } else {
+        // ぞろ目じゃない場合は1桁になるまでorぞろ目になるまで分解計算実行
+        let result = calcEachNum(day);
+        log("baseNumの計算結果 " + result.expression);
+        return {
+            cntSum: result.cntSum,
+            expression: result.expression,
+        }
+    }
+}
 
 /* 
+inputの月、日がぞろ目の場合は1桁に分解せずそのまま計算する 11月12日→11+1+2→14→1+4→5
+inputの年はぞろ目の場合でも1桁に分解後計算する 1999→1+9+9+9
+メイン：年+月+日
+*/
+function mainNum(birth_year, birth_month, day) {
+    let sumMonth;
+    let sumDay;
+    let digitsArrayMonth;
+    let digitsArrayDay;
+    let expressionMonth;
+    let expressionDay;
+
+    // 初回の年計算だけぞろ目を加味して計算する必要があるため別々で計算
+    // 年を1桁に分解して合計する
+    let calBirthYear = birth_year.toString();
+    let digitsArrayYear = calBirthYear.split('');
+    let sumBirthYear = digitsArrayYear.reduce((sum, digit) => sum + Number(digit), 0);
+    let expressionYear = digitsArrayYear.join(' + ');
+
+    // inputの月がぞろ目の場合、そのまま計算に使用する
+    if (isDoublesInArray(birth_month, doublesTargetArray)) {
+        sumMonth = birth_month;
+        expressionMonth = birth_month;
+    } else {
+        let calMonth = birth_month.toString();
+        digitsArrayMonth = calMonth.split('');
+        sumMonth = digitsArrayMonth.reduce((sum, digit) => sum + Number(digit), 0);
+        expressionMonth = digitsArrayMonth.join(' + ');
+    }
+    // inputの日がぞろ目の場合、そのまま計算に使用する
+    if (isDoublesInArray(day, doublesTargetArray)) {
+        sumDay = day;
+        expressionDay = day;
+    } else {
+        let calDay = day.toString();
+        digitsArrayDay = calDay.split('');
+        sumDay = digitsArrayDay.reduce((sum, digit) => sum + Number(digit), 0);
+        expressionDay = digitsArrayDay.join(' + ');
+    }
+
+    let calFirst = Number(sumBirthYear) + Number(sumMonth) + Number(sumDay);
+    // 計算式表示用　配列の各要素を文字列に変換して、"+" でつなげたものを格納
+    let firstLog = "(" + expressionYear + " + " + expressionMonth + " + " + expressionDay + ")";
+
+    // ぞろ目じゃない場合は1桁になるまでorぞろ目になるまで分解計算実行
+    let result = calcEachNum(calFirst);
+    log("mainNumの計算結果 " + firstLog + " -> " + result.expression)
+    return {
+        cntSum: result.cntSum,
+        expression: result.expression,
+    }
+}
+
+/* 
+inputの月、日がぞろ目の場合は1桁に分解せずそのまま計算する 11月12日→11+1+2→14→1+4→5
+チャレンジ：月+日
+*/
+function charengeNum(birth_month, day) {
+    let sumMonth;
+    let sumDay;
+    let digitsArrayMonth;
+    let digitsArrayDay;
+    let expressionMonth;
+    let expressionDay;
+
+    // inputの月がぞろ目の場合、そのまま計算に使用する
+    if (isDoublesInArray(birth_month, doublesTargetArray)) {
+        sumMonth = birth_month;
+        expressionMonth = birth_month;
+    } else {
+        let calMonth = birth_month.toString();
+        digitsArrayMonth = calMonth.split('');
+        sumMonth = digitsArrayMonth.reduce((sum, digit) => sum + Number(digit), 0);
+        expressionMonth = digitsArrayMonth.join(' + ');
+    }
+    // inputの日がぞろ目の場合、そのまま計算に使用する
+    if (isDoublesInArray(day, doublesTargetArray)) {
+        sumDay = day;
+        expressionDay = day;
+    } else {
+        let calDay = day.toString();
+        digitsArrayDay = calDay.split('');
+        sumDay = digitsArrayDay.reduce((sum, digit) => sum + Number(digit), 0);
+        expressionDay = digitsArrayDay.join(' + ');
+    }
+
+    let calFirst = Number(sumMonth) + Number(sumDay);
+    // 計算式表示用　配列の各要素を文字列に変換して、"+" でつなげたものを格納
+    let firstLog = "(" + expressionMonth + " + " + expressionDay + ")";
+
+    // ぞろ目じゃない場合は1桁になるまでorぞろ目になるまで分解計算実行
+    let result = calcEachNum(calFirst);
+    log("charengeNumの計算結果 " + firstLog + " -> " + result.expression)
+    return {
+        cntSum: result.cntSum,
+        expression: result.expression,
+    }
+}
+/* 
 入力値カウント(1+2+3+4...)各数字を一つずつカウントし、1桁になった場合またはぞろ目になった場合はカウントを終了する
-ベース
-メイン
-チャレンジ
 イヤーナンバー
 道
 到達
@@ -101,7 +220,6 @@ function calcEachNum(inputValue) {
         expression: expressionStr,
     }
 }
-
 // 生年月日から算出(ベース/メイン/チャレンジ/イヤーナンバー・メジャーサイクルナンバー/ピナクルナンバー/チャレンジナンバー)
 function calculateDigits(birthdate) {
     // 月と日を取得
@@ -110,11 +228,11 @@ function calculateDigits(birthdate) {
     let day = birthdate.substr(6, 2);//生まれ日
     let b_date = birthdate.substr(4, 4);//生まれ月日
 
-    let sumBirthdate = calcEachNum(birthdate);//メイン数
+    let sumDay = baseNum(day); //ベース
 
-    let sumDay = calcEachNum(day); //ベース
+    let sumBirthdate = mainNum(birth_year, birth_month, day);//メイン数
 
-    let sumBdate = calcEachNum(b_date);//チャレンジ・ピナクルナンバーのファースト
+    let sumBdate = charengeNum(birth_month, day);//チャレンジ・ピナクルナンバーのファースト
     //イヤーナンバー
     let yearSum = 0;
     var currentYear = new Date().getFullYear();
@@ -149,7 +267,7 @@ function calculateDigits(birthdate) {
     };
 
 
-    // メイン数を1桁になるまで分解足し算する
+    // メイン数を1桁になるまで分解足し算する メジャーサイクルで使用するメイン数は1桁になるまで分割計算したものを使用する
     let change_num_for_calc_age = parseInt(sumBirthdate.cntSum);
     let mainSingle = sumDigitsUntilSingle(change_num_for_calc_age);
 
@@ -288,6 +406,11 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
     var vowelsList = "";
     var consonantsList = "";
 
+    // 月と日を取得
+    let birth_year = birthdate.substr(0, 4);//生まれ年
+    let birth_month = birthdate.substr(4, 2);//生まれ月
+    let day = birthdate.substr(6, 2);//生まれ日
+
     // 入力文字列を変換表に基づいて数字に変換
     for (var i = 0; i < inputString.length; i++) {
         var upperCaseChar = inputString[i].toUpperCase();
@@ -317,9 +440,9 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
     log(convertedString);
     //道：convertedString
     let sumMichi = calcEachNum(convertedString);
- 
+
     //メイン数
-    let sumBirthdate = calcEachNum(birthdate);
+    let sumBirthdate = mainNum(birth_year,birth_month,day);
     let sumBirthdateNum = sumBirthdate.cntSum;
 
     //到達
