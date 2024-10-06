@@ -222,6 +222,11 @@ $(document).ready(function () {
             $("#inputedName").text(name);
             $("#inputedConvertedString").text(resultName.convertedString);
 
+            //ライトナンバーの値を設定
+            $("#valRigth").text(resultName.sumRigth.cntSum);
+            $("#valRigth_shiki").text(resultName.sumRigth.expression);
+            $("#valRigth_keyWord").text(numKeyWord[resultName.sumRigth.cntSum]);
+
             // 道の値を設定
             $("#valMichi").text(resultName.sumMichi.cntSum);
             $("#valMichi_shiki").text(resultName.sumMichi.expression);

@@ -50,23 +50,25 @@ function sumDigitsUntilSingle(inputValue) {
 }
 
 /* 
-ベースメインチャレンジの計算方法のルール
-inputの日がぞろ目の場合は1桁に分解せずそのまま計算する input11日→output 11
+計算開始時点でinput値がぞろ目(11~99)の場合は1桁に分解せずそのまま出力する。ぞろ目じゃない場合は1桁になるまでorぞろ目(11~99)になるまで足し算する。
+例：input値11 →output 11　/  input値111 →output 1+1+1→3
+この計算式を使用している項目
 ベース：日
+ライトナンバー
 */
-function baseNum(day) {
+function startIsDoublesNum(val) {
     // inputの日がぞろ目の場合はそのまま返却
-    if (isDoublesInArray(day, doublesTargetArray)) {
-        let expressionStr = "(" + day + ")" + " -> " + day;
-        log("baseNumの計算結果 " + expressionStr);
+    if (isDoublesInArray(val, doublesTargetArray)) {
+        let expressionStr = "(" + val + ")" + " -> " + val;
+        log("startIsDoublesNumの計算結果 " + expressionStr);
         return {
-            cntSum: day,
+            cntSum: val,
             expression: expressionStr,
         }
     } else {
         // ぞろ目じゃない場合は1桁になるまでorぞろ目になるまで分解計算実行
-        let result = calcEachNum(day);
-        log("baseNumの計算結果 " + result.expression);
+        let result = calcEachNum(val);
+        log("startIsDoublesNumの計算結果 " + result.expression);
         return {
             cntSum: result.cntSum,
             expression: result.expression,
@@ -228,7 +230,7 @@ function calculateDigits(birthdate) {
     let day = birthdate.substr(6, 2);//生まれ日
     let b_date = birthdate.substr(4, 4);//生まれ月日
 
-    let sumDay = baseNum(day); //ベース
+    let sumDay = startIsDoublesNum(day); //ベース
 
     let sumBirthdate = mainNum(birth_year, birth_month, day);//メイン数
 
@@ -438,6 +440,10 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
     }
     var missingNumbersString = missingNumbers.join(',');
     log(convertedString);
+
+    //ライトナンバー ローマ字を数字に変換後、全てを足して1桁になるまで足し算。ぞろ目11～99になったら計算ストップ。ローマ字を数字に変換時点で11～99の場合はそのまま出力する。
+    let sumRigth = startIsDoublesNum(convertedString);
+
     //道：convertedString
     let sumMichi = calcEachNum(convertedString);
 
@@ -501,6 +507,7 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
 
     return {
         convertedString: convertedString,
+        sumRigth: sumRigth,//ライトナンバー
         sumMichi: sumMichi,//道
         sumReach: sumReach,//到達
         sumHeart: sumHeart,//ハート
