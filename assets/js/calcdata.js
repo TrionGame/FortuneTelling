@@ -385,7 +385,7 @@ function calculateDigits(birthdate) {
 }
 
 //Name⇒数値化
-function convertStringToNumberWithConditions(inputString, birthdate) {
+function convertStringToNumberWithConditions(inputString, birthdate, nameMei) {
     let cntString = inputString.length;
     var conversionTable = {
         'A': '1', 'J': '1', 'S': '1',
@@ -408,12 +408,19 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
     var vowelsList = "";
     var consonantsList = "";
 
+    // 名のみ数字化する計算式で使用する変数を定義
+    var vowelsCountMei = 0;
+    var consonantsCountMei = 0;
+    var vowelsListMei = "";
+    var consonantsListMei = "";
+    var convertedStringMei = "";
+
     // 月と日を取得
     let birth_year = birthdate.substr(0, 4);//生まれ年
     let birth_month = birthdate.substr(4, 2);//生まれ月
     let day = birthdate.substr(6, 2);//生まれ日
 
-    // 入力文字列を変換表に基づいて数字に変換
+    // 入力文字列（フルネーム）を変換表に基づいて数字に変換
     for (var i = 0; i < inputString.length; i++) {
         var upperCaseChar = inputString[i].toUpperCase();
 
@@ -441,14 +448,36 @@ function convertStringToNumberWithConditions(inputString, birthdate) {
     var missingNumbersString = missingNumbers.join(',');
     log(convertedString);
 
+
+    // 入力文字列（名）を変換表に基づいて数字に変換
+    for (var i = 0; i < nameMei.length; i++) {
+        var upperCaseChar = nameMei[i].toUpperCase();
+
+        if (vowels.includes(upperCaseChar)) {
+            var convertedVowel = conversionTable[upperCaseChar];
+            convertedStringMei += convertedVowel;
+            vowelsCountMei++;
+            vowelsListMei += convertedVowel;
+        } else if (consonants.includes(upperCaseChar)) {
+            var convertedConsonant = conversionTable[upperCaseChar];
+            convertedStringMei += convertedConsonant;
+            consonantsCountMei++;
+            consonantsListMei += convertedConsonant;
+        } else {
+            convertedStringMei += nameMei[i];
+        }
+    }
+    log(convertedStringMei);
+
+
     //ライトナンバー ローマ字を数字に変換後、全てを足して1桁になるまで足し算。ぞろ目11～99になったら計算ストップ。ローマ字を数字に変換時点で11～99の場合はそのまま出力する。
-    let sumRigth = startIsDoublesNum(convertedString);
+    let sumRigth = startIsDoublesNum(convertedStringMei);
 
     //道：convertedString
     let sumMichi = calcEachNum(convertedString);
 
     //メイン数
-    let sumBirthdate = mainNum(birth_year,birth_month,day);
+    let sumBirthdate = mainNum(birth_year, birth_month, day);
     let sumBirthdateNum = sumBirthdate.cntSum;
 
     //到達

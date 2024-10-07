@@ -21,13 +21,19 @@ $(document).ready(function () {
             errMsg.push("生年月日は半角数字8桁で入力してください。");
         }
 
-        let name = $("[name='name']").val().replace(/\s/g, '');
-        if (name == "") {
-            errMsg.push("名前を入力してください。");
-        } else if (!/^[a-zA-Z]+$/.test(name)) {
-            errMsg.push("名前は英字のみ入力可能です。");
+        let nameSei = $("[name='name_sei']").val().replace(/\s/g, '');
+        if (nameSei == "") {
+            errMsg.push("性を入力してください。");
+        } else if (!/^[a-zA-Z]+$/.test(nameSei)) {
+            errMsg.push("性は英字のみ入力可能です。");
         }
 
+        let nameMei = $("[name='name_mei']").val().replace(/\s/g, '');
+        if (nameMei == "") {
+            errMsg.push("名を入力してください。");
+        } else if (!/^[a-zA-Z]+$/.test(nameMei)) {
+            errMsg.push("名は英字のみ入力可能です。");
+        }
 
         $("#errorMessages").empty();
         if (errMsg.length > 0) {
@@ -216,7 +222,9 @@ $(document).ready(function () {
 
 
             // アルファベット数字変換及び道・到達・ハート・ペルソナ・ウィーク・欠落・特性・フォーディメンションバランス取得
-            var resultName = convertStringToNumberWithConditions(name, birthdate);
+            var name = nameSei + nameMei;
+
+            var resultName = convertStringToNumberWithConditions(name, birthdate, nameMei);
 
             // inputの名前とアルファベット数字変換後の値
             $("#inputedName").text(name);
